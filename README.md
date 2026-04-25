@@ -18,14 +18,14 @@
 ├── 项目优化文档.md                      # 项目优化计划文档
 ├── 参考.md                            # 参考资料
 │
-├── agent1_crawler/                    # 数据采集模块（学生A）
+├── agent1_crawler/                    # 数据采集模块
 │   ├── README.md                      # 爬虫说明文档
 │   ├── bilibili_crawler.py            # 爬虫主程序（早期版本）
 │   ├── bilibili_crawler_v3.py         # 爬虫主程序（最新版本）
 │   ├── bilibili_data.json             # 爬取的原始数据
 │   └── requirements.txt               # Python依赖
 │
-├── agent2_nlp/                        # NLP处理模块（学生B）
+├── agent2_nlp/                        # NLP处理模块
 │   ├── clean_danmaku.py               # 数据清洗
 │   ├── segmentation.py                 # 中文分词（pkuseg/jieba）
 │   ├── nlp_process.py                 # NLP综合处理流水线
@@ -47,9 +47,8 @@
 │   ├── keywords.json                  # 关键词抽取结果
 │   ├── ner_entities.json              # NER实体识别结果
 │   ├── sentiment_distribution.json    # 情感分布统计
-│   └── lexicons/                      # 情感词典目录（空）
 │
-├── agent3_storage/                     # 大数据存储模块（学生C）
+├── agent3_storage/                     # 大数据存储模块
 │   ├── README.md                      # 存储方案说明
 │   ├── HBASE_SCHEMA.md                # HBase表结构设计
 │   ├── hbase_writer.py               # 数据写入工具
@@ -57,8 +56,8 @@
 │   ├── hbase_simulator.py            # HBase模拟测试工具
 │   └── wordfreq_mapreduce.py         # MapReduce词频统计
 │
-├── agent4_frontend/                    # 前端可视化模块（学生C）
-│   ├── index.html                    # 主页面（合并版）
+├── agent4_frontend/                    # 前端可视化模块
+│   ├── index.html                    # 主页面
 │   ├── css/
 │   │   └── style.css                # Kaggle风格样式
 │   └── js/
