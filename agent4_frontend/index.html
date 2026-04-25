@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹幕分析</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+        <!-- 导航栏 -->
+        <nav class="site-nav">
+            <div class="nav-brand">
+                <div class="nav-logo">D</div>
+                <span class="nav-title">Bilibili弹幕分析</span>
+            </div>
+            <div class="nav-tabs">
+                <span class="nav-tab active">弹幕分析</span>
+            </div>
+            <div class="nav-actions">
+                <span class="nav-badge">BV1jEAaz3E6K</span>
+            </div>
+        </nav>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <!-- 页面标题 -->
+            <div class="page-header">
+                <h1 class="page-title">弹幕分析</h1>
+                <p class="page-subtitle">词频统计 · 情感分析 · 用户行为 · 趋势洞察</p>
+            </div>
+
+            <!-- 视频概览 -->
+            <div class="kaggle-card hero-card">
+                <div class="hero-content">
+                    <div class="video-info">
+                        <h2 class="video-title" id="video-title">加载中...</h2>
+                        <div class="video-meta-row">
+                            <span class="video-meta-item">
+                                <span class="meta-icon">-</span>
+                                <span>BV号: <span id="video-bvid">-</span></span>
+                            </span>
+                            <span class="video-meta-item">
+                                <span class="meta-icon">-</span>
+                                <span>作者: <span id="video-author">-</span></span>
+                            </span>
+                            <span class="video-meta-item">
+                                <span class="meta-icon">-</span>
+                                <span>发布时间: <span id="video-publish">-</span></span>
+                            </span>
+                            <span class="video-meta-item">
+                                <span class="meta-icon">-</span>
+                                <span>时长: <span id="video-duration">-</span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="video-stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-icon play">P</div>
+                            <div class="stat-value" id="view-count">-</div>
+                            <div class="stat-label">播放</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon like">L</div>
+                            <div class="stat-value" id="like-count">-</div>
+                            <div class="stat-label">点赞</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon coin">C</div>
+                            <div class="stat-value" id="coin-count">-</div>
+                            <div class="stat-label">投币</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon favorite">F</div>
+                            <div class="stat-value" id="favorite-count">-</div>
+                            <div class="stat-label">收藏</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心指标 -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value purple" id="ov-raw">-</div>
+                    <div class="metric-label">原始弹幕</div>
+                    <div class="metric-sub">条</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value positive" id="ov-cleaned">-</div>
+                    <div class="metric-label">有效弹幕</div>
+                    <div class="metric-sub">条</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value accent" id="ov-words">-</div>
+                    <div class="metric-label">分词总数</div>
+                    <div class="metric-sub">词次</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value neutral" id="ov-unique">-</div>
+                    <div class="metric-label">不重复词</div>
+                    <div class="metric-sub">个</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value positive" id="ov-pos">-</div>
+                    <div class="metric-label">正面弹幕</div>
+                    <div class="metric-sub" id="ov-pos-pct">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value negative" id="ov-neg">-</div>
+                    <div class="metric-label">负面弹幕</div>
+                    <div class="metric-sub" id="ov-neg-pct">-</div>
+                </div>
+            </div>
+
+            <!-- 词云 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">W</div>
+                        弹幕词云
+                    </div>
+                </div>
+                <div class="chart-wrapper" id="wordcloud"></div>
+            </div>
+
+            <!-- 词频 + 情感分布 -->
+            <div class="chart-row">
+                <div class="kaggle-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-title-icon">F</div>
+                            词频 Top 20
+                        </div>
+                    </div>
+                    <div class="chart-wrapper" id="wordfreq-chart"></div>
+                </div>
+                <div class="kaggle-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-title-icon">P</div>
+                            情感分布
+                        </div>
+                    </div>
+                    <div class="chart-wrapper" id="sentiment-chart"></div>
+                </div>
+            </div>
+
+            <!-- 情感得分分布 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">D</div>
+                        情感得分分布 (SnowNLP 概率密度)
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-wrapper small" id="sentiment-dist-chart"></div>
+                </div>
+            </div>
+
+            <!-- LDA主题 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">T</div>
+                        LDA 主题分析
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="topics-grid" id="lda-topics"></div>
+                </div>
+            </div>
+
+            <!-- 主题详情表格 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">L</div>
+                        主题关键词详情
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="topic-table" class="data-table-wrapper"></div>
+                </div>
+            </div>
+
+            <!-- 情感趋势分析 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">C</div>
+                        情感趋势分析
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-wrapper small" id="sentiment-trend-chart"></div>
+                </div>
+            </div>
+
+            <!-- 弹幕类型分布 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">Y</div>
+                        弹幕类型分布
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-row">
+                        <div class="chart-wrapper" id="danmaku-type-chart" style="height:280px;"></div>
+                        <div class="type-sample-table" id="type-sample-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 用户行为分析 -->
+            <div class="kaggle-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-title-icon">U</div>
+                        用户行为分析
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="user-grid" id="user-behavior-stats">
+                        <div class="user-stat-card">
+                            <div class="user-stat-value" id="ub-total-users">-</div>
+                            <div class="user-stat-label">独立用户数</div>
+                        </div>
+                        <div class="user-stat-card">
+                            <div class="user-stat-value" id="ub-avg-danmaku">-</div>
+                            <div class="user-stat-label">人均弹幕</div>
+                        </div>
+                        <div class="user-stat-card">
+                            <div class="user-stat-value" id="ub-active-users">-</div>
+                            <div class="user-stat-label">活跃用户(≥3条)</div>
+                        </div>
+                        <div class="user-stat-card">
+                            <div class="user-stat-value" id="ub-top-user" style="font-size:20px">-</div>
+                            <div class="user-stat-label">最高发言用户</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="site-footer">
+            <p class="footer-text">
+                基于 SnowNLP 情感分析 + Gensim LDA 主题模型 | B站视频弹幕数据分析
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script>
+        var wordcloudChart = null;
+        var chartManager = null;
+
+        function fmt(n) {
+            if (n >= 10000) return (n / 10000).toFixed(1) + '万';
+            return n.toLocaleString();
+        }
+
+        // 渲染词云
+        function renderWordcloud(wordcloudData) {
+            var container = document.getElementById('wordcloud');
+            if (!container || !wordcloudData || wordcloudData.length === 0) return;
+
+            var chart = echarts.init(container);
+
+            var option = {
+                tooltip: {
+                    show: true,
+                    backgroundColor: 'rgba(50, 50, 50, 0.8)',
+                    borderRadius: 5,
+                    padding: [10, 15],
+                    textStyle: { color: '#fff', fontFamily: 'sans-serif' },
+                    formatter: function(params) {
+                        return '<div style="font-size:14px">' +
+                            '<strong>' + params.name + '</strong><br/>' +
+                            '出现次数: <span style="color:#fac858">' + params.value + '</span> 次' +
+                        '</div>';
+                    }
+                },
+                series: [{
+                    type: 'wordCloud',
+                    sizeRange: [12, 80],
+                    rotationRange: [0, 0],
+                    rotationStep: 0,
+                    shape: 'circle',
+                    left: 'center',
+                    top: 'center',
+                    width: '95%',
+                    height: '95%',
+                    drawOutOfBound: false,
+                    layoutAnimation: true,
+                    textStyle: {
+                        fontFamily: 'sans-serif',
+                        fontWeight: 'bold',
+                        color: function() {
+                            var colors = ['#9146FF', '#0294DF', '#00C7B7', '#2ECC71', '#F39C12', '#E74C3C', '#3498DB', '#9B59B6', '#1ABC9C'];
+                            return colors[Math.floor(Math.random() * colors.length)];
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: wordcloudData.map(function(item) {
+                        return { name: item.name, value: item.value };
+                    })
+                }]
+            };
+
+            chart.setOption(option);
+            window.addEventListener('resize', function() { chart.resize(); });
+            wordcloudChart = chart;
+        }
+
+        // 渲染弹幕类型
+        function renderDanmakuTypes(danmakuClassified) {
+            var chartContainer = document.getElementById('danmaku-type-chart');
+            var tableContainer = document.getElementById('type-sample-table');
+            if (!danmakuClassified) return;
+
+            var typeMap = {
+                normal: { label: '普通类', color: '#6B7280' },
+                question: { label: '提问类', color: '#3B82F6' },
+                learn: { label: '学习类', color: '#8B5CF6' },
+                meme: { label: '玩梗类', color: '#F59E0B' },
+                exclaim: { label: '感叹类', color: '#EC4899' },
+                spam: { label: '刷屏类', color: '#EF4444' },
+                bless: { label: '祝福类', color: '#10B981' },
+                idol: { label: '追星类', color: '#F97316' },
+                negative: { label: '负面类', color: '#DC2626' }
+            };
+
+            var types = danmakuClassified.type_distribution;
+            if (!types) return;
+
+            // 渲染饼图
+            if (chartContainer) {
+                var chart = echarts.init(chartContainer);
+                var pieData = [];
+                for (var key in types) {
+                    if (!types.hasOwnProperty(key)) continue;
+                    var info = typeMap[key] || { label: key, color: '#6B7280' };
+                    pieData.push({ name: info.label, value: types[key].count, itemStyle: { color: info.color } });
+                }
+
+                var option = {
+                    tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
+                    legend: { orient: 'vertical', right: '5%', top: 'center', textStyle: { color: '#6B7280' } },
+                    series: [{
+                        type: 'pie',
+                        radius: ['35%', '65%'],
+                        center: ['40%', '50%'],
+                        label: { show: true, formatter: '{b}\n{d}%', color: '#374151' },
+                        data: pieData
+                    }]
+                };
+                chart.setOption(option);
+            }
+
+            // 渲染示例表格
+            if (tableContainer && danmakuClassified.top_types) {
+                var rows = '<table class="data-table">' +
+                    '<thead><tr><th>类型</th><th>数量</th><th>占比</th><th>示例弹幕</th></tr></thead>' +
+                    '<tbody>';
+                for (var i = 0; i < danmakuClassified.top_types.length; i++) {
+                    var t = danmakuClassified.top_types[i];
+                    var info = typeMap[t.type] || { label: t.type, color: '#6B7280' };
+                    var sample = t.sample_danmaku && t.sample_danmaku[0] ? t.sample_danmaku[0].content : '-';
+                    if (sample.length > 20) sample = sample.substring(0, 20) + '...';
+                    rows += '<tr>' +
+                        '<td><span style="color:' + info.color + ';font-weight:600">' + info.label + '</span></td>' +
+                        '<td>' + t.count.toLocaleString() + '</td>' +
+                        '<td>' + t.ratio.toFixed(1) + '%</td>' +
+                        '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + sample + '</td>' +
+                    '</tr>';
+                }
+                rows += '</tbody></table>';
+                tableContainer.innerHTML = rows;
+            }
+        }
+
+        // 渲染LDA主题
+        function renderLdaTopics(ldaTopics) {
+            var container = document.getElementById('lda-topics');
+            if (!container || !ldaTopics) return;
+
+            var allTopics = [];
+            var posTopics = ldaTopics.positive?.topics || [];
+            var negTopics = ldaTopics.negative?.topics || [];
+
+            for (var i = 0; i < posTopics.length; i++) {
+                allTopics.push({ topic_id: posTopics[i].topic_id, keywords: posTopics[i].keywords || [], category: 'positive', label: '积极' });
+            }
+            for (var j = 0; j < negTopics.length; j++) {
+                allTopics.push({ topic_id: negTopics[j].topic_id, keywords: negTopics[j].keywords || [], category: 'negative', label: '消极' });
+            }
+
+            var categoryIcon = { positive: '+', negative: '-' };
+            var html = '';
+            for (var k = 0; k < allTopics.length && k < 8; k++) {
+                var topic = allTopics[k];
+                var kw1 = topic.keywords.slice(0, 5).join('、');
+                var kw2 = topic.keywords.slice(5, 10).join('、');
+                html += '<div class="topic-card ' + topic.category + '">' +
+                    '<div class="topic-card-header">' +
+                        '<span class="topic-title">' + topic.label + '主题 ' + topic.topic_id + '</span>' +
+                        '<span class="topic-badge">' + categoryIcon[topic.category] + '</span>' +
+                    '</div>' +
+                    '<div class="topic-keywords">' +
+                        '<span class="topic-keyword">' + kw1 + '</span>';
+                if (kw2) {
+                    html += '<br><span class="topic-keyword" style="margin-top:4px;display:inline-block">' + kw2 + '</span>';
+                }
+                html += '</div></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        // 渲染主题表格
+        function renderTopicTable(ldaTopics) {
+            var container = document.getElementById('topic-table');
+            if (!container || !ldaTopics) return;
+
+            var rows = '';
+            var categories = [
+                { key: 'positive', label: '积极主题 (0.6-1.0)', cls: 'positive' },
+                { key: 'negative', label: '消极主题 (0-0.4)', cls: 'negative' }
+            ];
+            for (var c = 0; c < categories.length; c++) {
+                var cat = categories[c];
+                var topics = ldaTopics[cat.key]?.topics || [];
+                for (var t = 0; t < topics.length; t++) {
+                    var topic = topics[t];
+                    rows += '<tr>' +
+                        '<td style="font-weight:600;color:var(--' + cat.cls + ')">' + cat.label + ' ' + topic.topic_id + '</td>' +
+                        '<td>' + topic.keywords.slice(0, 5).join('、') + '</td>' +
+                        '<td>' + topic.keywords.slice(5, 10).join('、') + '</td>' +
+                    '</tr>';
+                }
+            }
+            container.innerHTML = '<table class="data-table">' +
+                '<thead><tr><th>主题</th><th>关键词(1-5)</th><th>关键词(6-10)</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody></table>';
+        }
+
+        // 填充视频信息
+        function fillVideoInfo() {
+            document.getElementById('video-title').textContent = videoInfo.title;
+            document.getElementById('video-bvid').textContent = videoInfo.bv_id;
+            document.getElementById('video-author').textContent = videoInfo.author;
+            document.getElementById('video-publish').textContent = videoInfo.publish_time;
+            document.getElementById('video-duration').textContent = videoInfo.duration;
+            document.getElementById('view-count').textContent = fmt(videoInfo.view_count);
+            document.getElementById('like-count').textContent = fmt(videoInfo.like_count);
+            document.getElementById('coin-count').textContent = fmt(videoInfo.coin_count);
+            document.getElementById('favorite-count').textContent = fmt(videoInfo.favorite_count);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fillVideoInfo();
+
+            dataPromise.then(function(data) {
+                // 渲染核心指标
+                document.getElementById('ov-raw').textContent = videoInfo.danmaku_count.toLocaleString();
+                document.getElementById('ov-cleaned').textContent = (data.sentimentData?.total || 0).toLocaleString();
+                document.getElementById('ov-words').textContent = ((data.totalWords) || 0).toLocaleString();
+                document.getElementById('ov-unique').textContent = ((data.uniqueWords) || 0).toLocaleString();
+
+                var sentiment = data.sentimentData?.stats || data.sentimentData;
+                document.getElementById('ov-pos').textContent = (sentiment?.positive?.count || 0).toLocaleString();
+                document.getElementById('ov-pos-pct').textContent = (sentiment?.positive?.ratio || 0) + '%';
+                document.getElementById('ov-neg').textContent = (sentiment?.negative?.count || 0).toLocaleString();
+                document.getElementById('ov-neg-pct').textContent = (sentiment?.negative?.ratio || 0) + '%';
+
+                // 渲染词云
+                if (data.wordcloudData && data.wordcloudData.length > 0) {
+                    renderWordcloud(data.wordcloudData);
+                }
+
+                // 渲染图表
+                renderLdaTopics(data.ldaTopics);
+                renderTopicTable(data.ldaTopics);
+
+                chartManager = new ChartManager();
+                chartManager.initAllCharts(data);
+
+                // 渲染弹幕类型
+                if (data.danmakuClassified) {
+                    renderDanmakuTypes(data.danmakuClassified);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

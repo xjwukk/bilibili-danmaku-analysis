@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Large data files
+*.zip
+*.csv
+*.json
+!agent2_nlp/*.json
+!agent1_crawler/bilibili_data.json
+
+# Models
+*.marshal.*
+
+# Images
+*.png
+
+# Claude
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Large data archives
+online_shopping_10_cats.zip
