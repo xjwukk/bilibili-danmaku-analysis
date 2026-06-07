@@ -67,9 +67,8 @@
 │       └── timeline.js                # 时间轴组件
 │
 ├── agent5_report/                      # 课程设计报告
-│   ├── 报告A_爬虫.md                  # 学生A报告（爬虫+数据清洗）
-│   ├── 报告B_NLP.md                  # 学生B报告（NLP处理+词云）
-│   └── 报告C_存储前端.md              # 学生C报告（存储+前端+增强分析）
+│   ├── 报告A_数据层.md                # 学生A报告（爬虫+数据清洗+HBase存储）
+│   └── 报告B_应用层.md                # 学生B报告（NLP处理+前端可视化）
 │
 ├── 大数据应用系统开发实践-任务书1.docx
 └── 大数据应用系统开发实践-报告模板-每位同学提交.doc
@@ -81,11 +80,11 @@
 
 | 模块 | 负责学生 | 主要职责 |
 |------|---------|---------|
-| agent1_crawler | 学生A | B站API爬虫、Protobuf解析、数据清洗 |
-| agent2_nlp | 学生B | 分词、词频统计、情感分析、LDA主题、NER、关键词抽取、词云生成 |
-| agent3_storage | 学生C | HBase表设计、数据读写、MapReduce |
-| agent4_frontend | 学生C | ECharts词云、统计图表、前端交互 |
-| agent5_report | 全体 | 各自撰写负责模块的报告 |
+| agent1_crawler | 学生A（数据层） | B站API爬虫、Protobuf解析、数据清洗 |
+| agent3_storage | 学生A（数据层） | HBase表设计、数据读写、MapReduce |
+| agent2_nlp | 学生B（应用层） | 分词、词频统计、情感分析、LDA主题、NER、关键词抽取、词云生成 |
+| agent4_frontend | 学生B（应用层） | ECharts词云、统计图表、前端交互 |
+| agent5_report | 全体 | 学生A撰写数据层报告，学生B撰写应用层报告 |
 
 ---
 

@@ -1,0 +1,548 @@
+{
+  "tfidf_keywords": [
+    {
+      "word": "AI",
+      "score": 0.041508
+    },
+    {
+      "word": "ai",
+      "score": 0.036909
+    },
+    {
+      "word": "权限",
+      "score": 0.030202
+    },
+    {
+      "word": "问题",
+      "score": 0.029278
+    },
+    {
+      "word": "token",
+      "score": 0.027652
+    },
+    {
+      "word": "豆包",
+      "score": 0.026214
+    },
+    {
+      "word": "模型",
+      "score": 0.024857
+    },
+    {
+      "word": "人类",
+      "score": 0.023638
+    },
+    {
+      "word": "手机",
+      "score": 0.023638
+    },
+    {
+      "word": "智能",
+      "score": 0.021327
+    },
+    {
+      "word": "这么",
+      "score": 0.021325
+    },
+    {
+      "word": "电脑",
+      "score": 0.020316
+    },
+    {
+      "word": "上下文",
+      "score": 0.018705
+    },
+    {
+      "word": "不能",
+      "score": 0.017831
+    },
+    {
+      "word": "任务",
+      "score": 0.017333
+    },
+    {
+      "word": "直接",
+      "score": 0.017146
+    },
+    {
+      "word": "东西",
+      "score": 0.017056
+    },
+    {
+      "word": "安全",
+      "score": 0.016029
+    },
+    {
+      "word": "需要",
+      "score": 0.016029
+    },
+    {
+      "word": "学习",
+      "score": 0.015721
+    },
+    {
+      "word": "阿弥陀佛",
+      "score": 0.014508
+    },
+    {
+      "word": "不会",
+      "score": 0.014282
+    },
+    {
+      "word": "有点",
+      "score": 0.013962
+    },
+    {
+      "word": "只是",
+      "score": 0.013823
+    },
+    {
+      "word": "指令",
+      "score": 0.01373
+    },
+    {
+      "word": "老师",
+      "score": 0.013639
+    },
+    {
+      "word": "危险",
+      "score": 0.013595
+    },
+    {
+      "word": "skill",
+      "score": 0.013038
+    },
+    {
+      "word": "龙虾",
+      "score": 0.012986
+    },
+    {
+      "word": "病毒",
+      "score": 0.012655
+    }
+  ],
+  "textrank_keywords": [
+    {
+      "word": "时代",
+      "score": 1.0
+    },
+    {
+      "word": "淘金热",
+      "score": 1.0
+    },
+    {
+      "word": "铲子",
+      "score": 1.0
+    },
+    {
+      "word": "安全",
+      "score": 1.0
+    },
+    {
+      "word": "高管",
+      "score": 1.0
+    },
+    {
+      "word": "一定",
+      "score": 1.0
+    },
+    {
+      "word": "niko",
+      "score": 1.0
+    },
+    {
+      "word": "细节",
+      "score": 1.0
+    },
+    {
+      "word": "Mac",
+      "score": 1.0
+    },
+    {
+      "word": "mini",
+      "score": 1.0
+    },
+    {
+      "word": "平账",
+      "score": 1.0
+    },
+    {
+      "word": "仙人",
+      "score": 1.0
+    },
+    {
+      "word": "龙虾",
+      "score": 1.0
+    },
+    {
+      "word": "多尔衮",
+      "score": 1.0
+    },
+    {
+      "word": "直接",
+      "score": 1.0
+    },
+    {
+      "word": "一键",
+      "score": 1.0
+    },
+    {
+      "word": "三连",
+      "score": 1.0
+    },
+    {
+      "word": "剧本",
+      "score": 1.0
+    },
+    {
+      "word": "滞销",
+      "score": 1.0
+    },
+    {
+      "word": "帮帮",
+      "score": 1.0
+    },
+    {
+      "word": "每次",
+      "score": 1.0
+    },
+    {
+      "word": "软件",
+      "score": 1.0
+    },
+    {
+      "word": "收集",
+      "score": 1.0
+    },
+    {
+      "word": "数据",
+      "score": 1.0
+    },
+    {
+      "word": "进行",
+      "score": 1.0
+    },
+    {
+      "word": "学习",
+      "score": 1.0
+    },
+    {
+      "word": "不够",
+      "score": 1.0
+    },
+    {
+      "word": "听说",
+      "score": 1.0
+    },
+    {
+      "word": "英语",
+      "score": 1.0
+    },
+    {
+      "word": "阅读",
+      "score": 1.0
+    }
+  ],
+  "combined_keywords": [
+    {
+      "word": "AI",
+      "combined_score": 1.0,
+      "tfidf_score": 0.041508,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "电脑",
+      "combined_score": 0.7447,
+      "tfidf_score": 0.020316,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "直接",
+      "combined_score": 0.7065,
+      "tfidf_score": 0.017146,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "安全",
+      "combined_score": 0.6931,
+      "tfidf_score": 0.016029,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "学习",
+      "combined_score": 0.6894,
+      "tfidf_score": 0.015721,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "龙虾",
+      "combined_score": 0.6564,
+      "tfidf_score": 0.012986,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "病毒",
+      "combined_score": 0.6524,
+      "tfidf_score": 0.012655,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "软件",
+      "combined_score": 0.6319,
+      "tfidf_score": 0.010952,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "时代",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "淘金热",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "铲子",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "高管",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "一定",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "niko",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "细节",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "Mac",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "mini",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "平账",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "仙人",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "多尔衮",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "一键",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "三连",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "剧本",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "滞销",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "帮帮",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "每次",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "收集",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "数据",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "进行",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "不够",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "听说",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "英语",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "阅读",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "看到",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "用户",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "木马病毒",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "猜错",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "主角",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "打卡",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "词元",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "不要",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "变成",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "混杂",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "了解",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "担多大",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "风险",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "不行",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "全是",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "一次",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    },
+    {
+      "word": "有人",
+      "combined_score": 0.5,
+      "tfidf_score": 0,
+      "textrank_score": 1.0
+    }
+  ]
+}

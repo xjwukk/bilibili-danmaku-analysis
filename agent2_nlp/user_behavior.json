@@ -1,0 +1,369 @@
+{
+  "total_unique_users": 3505,
+  "total_danmaku": 3515,
+  "avg_danmaku_per_user": 1.0,
+  "top20_active_users": [
+    {
+      "user_id": "anon_298479",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "这不是电报吗",
+        "收到 发给你"
+      ]
+    },
+    {
+      "user_id": "anon_794756",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "@我要验牌",
+        "隐私不会泄露吗"
+      ]
+    },
+    {
+      "user_id": "anon_945286",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "赛博奴隶",
+        "真的做好了吗"
+      ]
+    },
+    {
+      "user_id": "anon_94946",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "这个是模型能力问题",
+        "如何让智能体拥有经验"
+      ]
+    },
+    {
+      "user_id": "anon_864523",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "V4百万token",
+        "这个离谱了"
+      ]
+    },
+    {
+      "user_id": "anon_61441",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "图穷匕见",
+        "会制造和使用工具"
+      ]
+    },
+    {
+      "user_id": "anon_148548",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "和豆包相似",
+        "这就太可怕了，万一有个漏洞BUG什么的，帐号数据没就算了，要是盗刷银行卡怎么办？"
+      ]
+    },
+    {
+      "user_id": "anon_351407",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "早有了但是就他火了",
+        "有爱死机 齐马蓝的味道了"
+      ]
+    },
+    {
+      "user_id": "anon_11020",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "并非不需要关心过程，你敢不知道过程让ta乱来吗",
+        "帮我打三角洲"
+      ]
+    },
+    {
+      "user_id": "anon_362625",
+      "danmaku_count": 2,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 2,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 2
+      },
+      "mode_distribution": {
+        "0": 2
+      },
+      "sample_contents": [
+        "外来入侵物种",
+        "就说地翻了没吧"
+      ]
+    },
+    {
+      "user_id": "anon_289956",
+      "danmaku_count": 1,
+      "positive_count": 0,
+      "negative_count": 1,
+      "neutral_count": 0,
+      "dominant_sentiment": "negative",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "新时代的淘金热和卖铲子"
+      ]
+    },
+    {
+      "user_id": "anon_841036",
+      "danmaku_count": 1,
+      "positive_count": 1,
+      "negative_count": 0,
+      "neutral_count": 0,
+      "dominant_sentiment": "positive",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "安全高管一定要安全"
+      ]
+    },
+    {
+      "user_id": "anon_737570",
+      "danmaku_count": 1,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 1,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "niko"
+      ]
+    },
+    {
+      "user_id": "anon_864537",
+      "danmaku_count": 1,
+      "positive_count": 1,
+      "negative_count": 0,
+      "neutral_count": 0,
+      "dominant_sentiment": "positive",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "细节Mac mini"
+      ]
+    },
+    {
+      "user_id": "anon_678778",
+      "danmaku_count": 1,
+      "positive_count": 1,
+      "negative_count": 0,
+      "neutral_count": 0,
+      "dominant_sentiment": "positive",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "平账仙人？？？"
+      ]
+    },
+    {
+      "user_id": "anon_758899",
+      "danmaku_count": 1,
+      "positive_count": 1,
+      "negative_count": 0,
+      "neutral_count": 0,
+      "dominant_sentiment": "positive",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "养龙虾 多尔衮直接一键三连"
+      ]
+    },
+    {
+      "user_id": "anon_371121",
+      "danmaku_count": 1,
+      "positive_count": 0,
+      "negative_count": 0,
+      "neutral_count": 1,
+      "dominant_sentiment": "neutral",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "chedi"
+      ]
+    },
+    {
+      "user_id": "anon_848753",
+      "danmaku_count": 1,
+      "positive_count": 0,
+      "negative_count": 1,
+      "neutral_count": 0,
+      "dominant_sentiment": "negative",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "剧本"
+      ]
+    },
+    {
+      "user_id": "anon_559563",
+      "danmaku_count": 1,
+      "positive_count": 0,
+      "negative_count": 1,
+      "neutral_count": 0,
+      "dominant_sentiment": "negative",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "龙虾滞销帮帮我们"
+      ]
+    },
+    {
+      "user_id": "anon_878920",
+      "danmaku_count": 1,
+      "positive_count": 1,
+      "negative_count": 0,
+      "neutral_count": 0,
+      "dominant_sentiment": "positive",
+      "pool_distribution": {
+        "0": 1
+      },
+      "mode_distribution": {
+        "0": 1
+      },
+      "sample_contents": [
+        "每次像这个软件提问 它都在收集数据进行学习 所以不够安全"
+      ]
+    }
+  ],
+  "danmaku_count_distribution": {
+    "1条": 3495,
+    "2条": 10
+  },
+  "user_sentiment_distribution": {
+    "positive_users": 37,
+    "negative_users": 43,
+    "neutral_users": 3425,
+    "mixed_users": 0
+  },
+  "highly_active_user_count": 0,
+  "highly_active_users_sample": []
+}

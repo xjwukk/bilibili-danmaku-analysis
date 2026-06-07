@@ -85,7 +85,6 @@ python sentiment_distribution.py  # → sentiment_distribution.png
 
 ## Report Templates
 
-Three student reports in `agent5_report/`:
-- 报告A_爬虫.md (Student A - Crawler)
-- 报告B_NLP.md (Student B - NLP)
-- 报告C_存储前端.md (Student C - Storage & Frontend)
+Two student reports in `agent5_report/`, divided by data layer / application layer:
+- 报告A_数据层.md (Student A - Crawler, Data Cleaning, HBase Storage)
+- 报告B_应用层.md (Student B - NLP Processing, ECharts Frontend Visualization)

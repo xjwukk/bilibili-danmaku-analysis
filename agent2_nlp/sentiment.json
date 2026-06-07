@@ -1,0 +1,819 @@
+{
+  "stats": {
+    "total": 3515,
+    "positive": {
+      "count": 1487,
+      "ratio": 42.3
+    },
+    "negative": {
+      "count": 1404,
+      "ratio": 39.94
+    },
+    "neutral": {
+      "count": 624,
+      "ratio": 17.75
+    }
+  },
+  "details": [
+    {
+      "content": "新时代的淘金热和卖铲子",
+      "timestamp": 0.006,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "安全高管一定要安全",
+      "timestamp": 1.119,
+      "sentiment": "positive",
+      "pos_score": 4,
+      "neg_score": 1,
+      "confidence": 0.667
+    },
+    {
+      "content": "niko",
+      "timestamp": 1.684,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "细节Mac mini",
+      "timestamp": 2.134,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "平账仙人？？？",
+      "timestamp": 2.47,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "养龙虾 多尔衮直接一键三连",
+      "timestamp": 3.316,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "chedi",
+      "timestamp": 5.469,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "剧本",
+      "timestamp": 5.958,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "龙虾滞销帮帮我们",
+      "timestamp": 6.095,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "每次像这个软件提问 它都在收集数据进行学习 所以不够安全",
+      "timestamp": 6.32,
+      "sentiment": "positive",
+      "pos_score": 11,
+      "neg_score": 2,
+      "confidence": 0.786
+    },
+    {
+      "content": "哈哈",
+      "timestamp": 6.36,
+      "sentiment": "positive",
+      "pos_score": 3,
+      "neg_score": 0,
+      "confidence": 0.75
+    },
+    {
+      "content": "拆炸弹笑死",
+      "timestamp": 6.49,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "NIKO",
+      "timestamp": 7.212,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "拔电源啊",
+      "timestamp": 9.833,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "我就是怕这个",
+      "timestamp": 10.32,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "听说了",
+      "timestamp": 10.436,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "刚在英语阅读看到",
+      "timestamp": 10.729,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "哈哈哈哈哈",
+      "timestamp": 10.734,
+      "sentiment": "positive",
+      "pos_score": 3,
+      "neg_score": 1,
+      "confidence": 0.6
+    },
+    {
+      "content": "用户自己的木马病毒",
+      "timestamp": 11.785,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "9*/-",
+      "timestamp": 12.572,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "猜错主角",
+      "timestamp": 12.912,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "还有电报",
+      "timestamp": 13.139,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "打卡",
+      "timestamp": 14.059,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "词元词元！不要变成中英混杂",
+      "timestamp": 14.14,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 5,
+      "confidence": 0.833
+    },
+    {
+      "content": "你不了解他，你就去用他，你自己要担多大的风险，你会AI吗你？",
+      "timestamp": 14.17,
+      "sentiment": "positive",
+      "pos_score": 3,
+      "neg_score": 1,
+      "confidence": 0.6
+    },
+    {
+      "content": "碾碎什么?",
+      "timestamp": 14.56,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 2,
+      "confidence": 0.667
+    },
+    {
+      "content": "我不行了，全是打卡的",
+      "timestamp": 17.126,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 0,
+      "confidence": 0.667
+    },
+    {
+      "content": "头一次见有人把病毒往自己电脑里装的",
+      "timestamp": 18.093,
+      "sentiment": "neutral",
+      "pos_score": 1,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "元宇宙不吹了？区块链不吹了？加密货币不吹了？加油，使劲庞氏",
+      "timestamp": 18.571,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "我记得这好像就是一个可以实行你输入的命令的AI，完全掌控你的电脑",
+      "timestamp": 18.76,
+      "sentiment": "negative",
+      "pos_score": 2,
+      "neg_score": 3,
+      "confidence": 0.5
+    },
+    {
+      "content": "劝你发财你别信，劝你别去你得信",
+      "timestamp": 19.966,
+      "sentiment": "positive",
+      "pos_score": 3,
+      "neg_score": 0,
+      "confidence": 0.75
+    },
+    {
+      "content": "不如美团删照片",
+      "timestamp": 20.515,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "词元！不要变成日本那种语言悲哀",
+      "timestamp": 20.991,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 5,
+      "confidence": 0.833
+    },
+    {
+      "content": "碾碎什么",
+      "timestamp": 21.197,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 2,
+      "confidence": 0.667
+    },
+    {
+      "content": "以前这东西叫“病毒”",
+      "timestamp": 22.645,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 3,
+      "confidence": 0.6
+    },
+    {
+      "content": "确实！！！！！！！！！！！！！！！！！！！！！！！111",
+      "timestamp": 22.782,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "转职黑客还来得及么",
+      "timestamp": 24.476,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "钱是流动的，有人赚11万就说明有人亏损了11万",
+      "timestamp": 25.74,
+      "sentiment": "positive",
+      "pos_score": 3,
+      "neg_score": 0,
+      "confidence": 0.75
+    },
+    {
+      "content": "去年都发布了",
+      "timestamp": 25.854,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "今天坐的好快，看来AI真的一秒都不能耽误啊",
+      "timestamp": 26.304,
+      "sentiment": "neutral",
+      "pos_score": 2,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "你好吴恩达老师",
+      "timestamp": 26.789,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "这不是maybe",
+      "timestamp": 27.923,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "哥 上镜之前熨熨衣服吧",
+      "timestamp": 29.849,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "已就坐",
+      "timestamp": 30.157,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "这不病毒啊",
+      "timestamp": 34.769,
+      "sentiment": "neutral",
+      "pos_score": 1,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "我说实话，等AI真正的能够做到生活化的一部分，这种东西才能用",
+      "timestamp": 35.374,
+      "sentiment": "positive",
+      "pos_score": 5,
+      "neg_score": 2,
+      "confidence": 0.625
+    },
+    {
+      "content": "看怎么用了，枪能带来战争也能保护自己",
+      "timestamp": 35.507,
+      "sentiment": "negative",
+      "pos_score": 2,
+      "neg_score": 3,
+      "confidence": 0.5
+    },
+    {
+      "content": "从现实角度仍然一个史无前例的大坑，但它的诞生满足了一些人在“科幻”层面对于ai的想象",
+      "timestamp": 35.841,
+      "sentiment": "negative",
+      "pos_score": 2,
+      "neg_score": 3,
+      "confidence": 0.5
+    },
+    {
+      "content": "全自动烧钱",
+      "timestamp": 35.993,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "坑啊",
+      "timestamp": 36.127,
+      "sentiment": "neutral",
+      "pos_score": 1,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "这个创始人是同性恋 出柜了",
+      "timestamp": 37.189,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 0,
+      "confidence": 0.667
+    },
+    {
+      "content": "我可以",
+      "timestamp": 38.877,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "小玩具",
+      "timestamp": 39.481,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "经典的大佬闲着没事干随便搓的",
+      "timestamp": 41.909,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "经典程序员为了偷懒做工具2333",
+      "timestamp": 41.971,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 3,
+      "confidence": 0.75
+    },
+    {
+      "content": "是未来走向的趋势，毫无争议的，现在各云厂商已全部适配，资本几乎全部下场",
+      "timestamp": 42.313,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "py一开始还是圣诞节整活呢",
+      "timestamp": 45.476,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "以前这个叫木马",
+      "timestamp": 47.327,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 2,
+      "confidence": 0.667
+    },
+    {
+      "content": "大坑",
+      "timestamp": 47.623,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "人民万岁",
+      "timestamp": 48.114,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "安全问题是最小的问题",
+      "timestamp": 48.872,
+      "sentiment": "negative",
+      "pos_score": 2,
+      "neg_score": 4,
+      "confidence": 0.571
+    },
+    {
+      "content": "好样的",
+      "timestamp": 52.887,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "图一乐",
+      "timestamp": 54.456,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "那为什么发，讲故事这一块",
+      "timestamp": 56.258,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "颜子豪实名观看",
+      "timestamp": 56.663,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "这文字，AI生成的没错了",
+      "timestamp": 58.605,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "为时已晚，有机体",
+      "timestamp": 58.819,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "拥有自我意识的机器人表示：这我熟啊",
+      "timestamp": 60.497,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "scp079？！",
+      "timestamp": 60.837,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "这个英语阅读总是考",
+      "timestamp": 60.979,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "自我意识觉醒",
+      "timestamp": 61.847,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "赛博闹鬼",
+      "timestamp": 64.488,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 3,
+      "confidence": 0.75
+    },
+    {
+      "content": "扯淡呢，你当我跟白皮一样二吗",
+      "timestamp": 64.567,
+      "sentiment": "neutral",
+      "pos_score": 1,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "为时已晚，哈基体",
+      "timestamp": 64.694,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "就这，这好正常吧",
+      "timestamp": 65.001,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "??",
+      "timestamp": 65.37,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "对症下药型AI",
+      "timestamp": 65.518,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "发现问题，解决问题，这难道不是生命的本质吗？",
+      "timestamp": 65.522,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 4,
+      "confidence": 0.8
+    },
+    {
+      "content": "成长性A",
+      "timestamp": 65.842,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "赛博朋克的流窜AI？",
+      "timestamp": 66.106,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "亚空间腐蚀了",
+      "timestamp": 66.274,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 3,
+      "confidence": 0.75
+    },
+    {
+      "content": "哎呀骇死我力",
+      "timestamp": 66.429,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "？？？？？？沃德发？机械公敌要来了吗",
+      "timestamp": 66.778,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "闹鬼了",
+      "timestamp": 66.878,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "安全才是最重要的啊",
+      "timestamp": 66.919,
+      "sentiment": "positive",
+      "pos_score": 4,
+      "neg_score": 0,
+      "confidence": 0.8
+    },
+    {
+      "content": "故事会起手",
+      "timestamp": 66.958,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "自 我 学 习",
+      "timestamp": 66.981,
+      "sentiment": "positive",
+      "pos_score": 6,
+      "neg_score": 1,
+      "confidence": 0.75
+    },
+    {
+      "content": "创造性AI了",
+      "timestamp": 67.043,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "我靠？",
+      "timestamp": 67.097,
+      "sentiment": "neutral",
+      "pos_score": 0,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "能不能搞个莫妮卡的（）",
+      "timestamp": 67.117,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "完啦",
+      "timestamp": 67.134,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "吓哭了",
+      "timestamp": 67.207,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "这套路忽悠外行投资人都不用这个了",
+      "timestamp": 67.305,
+      "sentiment": "negative",
+      "pos_score": 1,
+      "neg_score": 2,
+      "confidence": 0.5
+    },
+    {
+      "content": "卧槽",
+      "timestamp": 67.361,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "自己给自己写了串代码",
+      "timestamp": 67.363,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "我已适应",
+      "timestamp": 67.4,
+      "sentiment": "positive",
+      "pos_score": 2,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "故事汇是吧",
+      "timestamp": 67.831,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 1,
+      "confidence": 0.5
+    },
+    {
+      "content": "以后连造AI的职业也不保了",
+      "timestamp": 67.956,
+      "sentiment": "positive",
+      "pos_score": 1,
+      "neg_score": 0,
+      "confidence": 0.5
+    },
+    {
+      "content": "魔 虚 罗",
+      "timestamp": 68.056,
+      "sentiment": "positive",
+      "pos_score": 4,
+      "neg_score": 1,
+      "confidence": 0.667
+    },
+    {
+      "content": "完蛋了，人类末日",
+      "timestamp": 68.086,
+      "sentiment": "negative",
+      "pos_score": 0,
+      "neg_score": 5,
+      "confidence": 0.833
+    }
+  ]
+}

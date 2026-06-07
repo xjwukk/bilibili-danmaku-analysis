@@ -10,7 +10,6 @@ build/
 # Large data files
 *.zip
 *.csv
-*.json
 !agent2_nlp/*.json
 !agent1_crawler/bilibili_data.json
 

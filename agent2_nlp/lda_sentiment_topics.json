@@ -1,0 +1,146 @@
+{
+  "positive": {
+    "danmaku_count": 1099,
+    "valid_doc_count": 978,
+    "topic_count": 4,
+    "coherence_score": 0.6908,
+    "topics": [
+      {
+        "topic_id": 1,
+        "keywords": [
+          "人类",
+          "模型",
+          "问题",
+          "能力",
+          "需要",
+          "直接",
+          "没有",
+          "公司",
+          "知道",
+          "解决"
+        ],
+        "category": "positive"
+      },
+      {
+        "topic_id": 2,
+        "keywords": [
+          "进化",
+          "可能",
+          "可爱",
+          "奶茶",
+          "记忆",
+          "感觉",
+          "企业",
+          "故事",
+          "智能",
+          "时代"
+        ],
+        "category": "positive"
+      },
+      {
+        "topic_id": 3,
+        "keywords": [
+          "权限",
+          "老师",
+          "工具",
+          "信息",
+          "风险",
+          "重要",
+          "任务",
+          "创造性",
+          "视频",
+          "弹幕"
+        ],
+        "category": "positive"
+      },
+      {
+        "topic_id": 4,
+        "keywords": [
+          "学习",
+          "豆包",
+          "世界",
+          "大人",
+          "手机",
+          "不能",
+          "电脑",
+          "确实",
+          "数据",
+          "危机"
+        ],
+        "category": "positive"
+      }
+    ]
+  },
+  "negative": {
+    "danmaku_count": 848,
+    "valid_doc_count": 728,
+    "topic_count": 4,
+    "coherence_score": 0.7109,
+    "topics": [
+      {
+        "topic_id": 1,
+        "keywords": [
+          "不行",
+          "好像",
+          "炒作",
+          "咋办",
+          "任务",
+          "风险",
+          "豆包",
+          "智能",
+          "算力",
+          "链接"
+        ],
+        "category": "negative"
+      },
+      {
+        "topic_id": 2,
+        "keywords": [
+          "问题",
+          "不会",
+          "感觉",
+          "吓人",
+          "间谍",
+          "审核",
+          "有点",
+          "嘴炮",
+          "污染",
+          "像是"
+        ],
+        "category": "negative"
+      },
+      {
+        "topic_id": 3,
+        "keywords": [
+          "电脑",
+          "软件",
+          "权限",
+          "接入",
+          "知道",
+          "消耗",
+          "过程",
+          "使用",
+          "手机",
+          "估计"
+        ],
+        "category": "negative"
+      },
+      {
+        "topic_id": 4,
+        "keywords": [
+          "直接",
+          "安全",
+          "不能",
+          "发现",
+          "赚钱",
+          "觉醒",
+          "整合",
+          "系统",
+          "信息",
+          "主人"
+        ],
+        "category": "negative"
+      }
+    ]
+  }
+}

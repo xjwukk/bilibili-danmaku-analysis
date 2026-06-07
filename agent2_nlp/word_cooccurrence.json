@@ -1,0 +1,951 @@
+{
+  "network_stats": {
+    "node_count": 50,
+    "edge_count": 275,
+    "avg_degree": 11.0,
+    "max_degree": 30,
+    "density": 0.2245
+  },
+  "nodes": [
+    {
+      "name": "AI",
+      "freq": 142,
+      "degree": 30,
+      "category": "short"
+    },
+    {
+      "name": "权限",
+      "freq": 93,
+      "degree": 26,
+      "category": "short"
+    },
+    {
+      "name": "问题",
+      "freq": 87,
+      "degree": 25,
+      "category": "short"
+    },
+    {
+      "name": "ai",
+      "freq": 121,
+      "degree": 25,
+      "category": "short"
+    },
+    {
+      "name": "模型",
+      "freq": 71,
+      "degree": 20,
+      "category": "short"
+    },
+    {
+      "name": "直接",
+      "freq": 44,
+      "degree": 17,
+      "category": "short"
+    },
+    {
+      "name": "人类",
+      "freq": 64,
+      "degree": 16,
+      "category": "short"
+    },
+    {
+      "name": "东西",
+      "freq": 44,
+      "degree": 16,
+      "category": "short"
+    },
+    {
+      "name": "智能",
+      "freq": 58,
+      "degree": 16,
+      "category": "short"
+    },
+    {
+      "name": "skill",
+      "freq": 30,
+      "degree": 16,
+      "category": "neutral"
+    },
+    {
+      "name": "不会",
+      "freq": 35,
+      "degree": 15,
+      "category": "short"
+    },
+    {
+      "name": "上下文",
+      "freq": 49,
+      "degree": 15,
+      "category": "neutral"
+    },
+    {
+      "name": "电脑",
+      "freq": 54,
+      "degree": 15,
+      "category": "short"
+    },
+    {
+      "name": "openclaw",
+      "freq": 26,
+      "degree": 14,
+      "category": "neutral"
+    },
+    {
+      "name": "能力",
+      "freq": 25,
+      "degree": 14,
+      "category": "short"
+    },
+    {
+      "name": "感觉",
+      "freq": 39,
+      "degree": 14,
+      "category": "short"
+    },
+    {
+      "name": "需要",
+      "freq": 40,
+      "degree": 14,
+      "category": "short"
+    },
+    {
+      "name": "任务",
+      "freq": 44,
+      "degree": 14,
+      "category": "short"
+    },
+    {
+      "name": "龙虾",
+      "freq": 31,
+      "degree": 13,
+      "category": "short"
+    },
+    {
+      "name": "手机",
+      "freq": 67,
+      "degree": 13,
+      "category": "short"
+    },
+    {
+      "name": "软件",
+      "freq": 25,
+      "degree": 12,
+      "category": "short"
+    },
+    {
+      "name": "使用",
+      "freq": 23,
+      "degree": 12,
+      "category": "short"
+    },
+    {
+      "name": "安全",
+      "freq": 40,
+      "degree": 12,
+      "category": "short"
+    },
+    {
+      "name": "token",
+      "freq": 83,
+      "degree": 11,
+      "category": "neutral"
+    },
+    {
+      "name": "小龙虾",
+      "freq": 25,
+      "degree": 10,
+      "category": "neutral"
+    },
+    {
+      "name": "工具",
+      "freq": 27,
+      "degree": 10,
+      "category": "short"
+    },
+    {
+      "name": "不能",
+      "freq": 46,
+      "degree": 10,
+      "category": "short"
+    },
+    {
+      "name": "豆包",
+      "freq": 76,
+      "degree": 10,
+      "category": "short"
+    },
+    {
+      "name": "学习",
+      "freq": 39,
+      "degree": 10,
+      "category": "short"
+    },
+    {
+      "name": "记忆",
+      "freq": 23,
+      "degree": 10,
+      "category": "short"
+    },
+    {
+      "name": "有点",
+      "freq": 34,
+      "degree": 9,
+      "category": "short"
+    },
+    {
+      "name": "skills",
+      "freq": 29,
+      "degree": 9,
+      "category": "neutral"
+    },
+    {
+      "name": "病毒",
+      "freq": 30,
+      "degree": 9,
+      "category": "short"
+    },
+    {
+      "name": "隐私",
+      "freq": 24,
+      "degree": 9,
+      "category": "short"
+    },
+    {
+      "name": "信息",
+      "freq": 23,
+      "degree": 8,
+      "category": "short"
+    },
+    {
+      "name": "代码",
+      "freq": 26,
+      "degree": 8,
+      "category": "short"
+    },
+    {
+      "name": "指令",
+      "freq": 33,
+      "degree": 7,
+      "category": "short"
+    },
+    {
+      "name": "危险",
+      "freq": 32,
+      "degree": 7,
+      "category": "short"
+    },
+    {
+      "name": "进化",
+      "freq": 28,
+      "degree": 7,
+      "category": "short"
+    },
+    {
+      "name": "哈哈哈哈",
+      "freq": 27,
+      "degree": 6,
+      "category": "neutral"
+    },
+    {
+      "name": "世界",
+      "freq": 29,
+      "degree": 6,
+      "category": "short"
+    },
+    {
+      "name": "天网",
+      "freq": 30,
+      "degree": 4,
+      "category": "short"
+    },
+    {
+      "name": "老师",
+      "freq": 33,
+      "degree": 4,
+      "category": "short"
+    },
+    {
+      "name": "cookie",
+      "freq": 27,
+      "degree": 2,
+      "category": "neutral"
+    },
+    {
+      "name": "一个",
+      "freq": 93,
+      "degree": 0,
+      "category": "short"
+    },
+    {
+      "name": "知道",
+      "freq": 44,
+      "degree": 0,
+      "category": "short"
+    },
+    {
+      "name": "没有",
+      "freq": 31,
+      "degree": 0,
+      "category": "short"
+    },
+    {
+      "name": "一下",
+      "freq": 23,
+      "degree": 0,
+      "category": "short"
+    },
+    {
+      "name": "已经",
+      "freq": 37,
+      "degree": 0,
+      "category": "short"
+    },
+    {
+      "name": "现在",
+      "freq": 52,
+      "degree": 0,
+      "category": "short"
+    }
+  ],
+  "edges": [
+    {
+      "source": "手机",
+      "target": "豆包",
+      "weight": 58
+    },
+    {
+      "source": "模型",
+      "target": "问题",
+      "weight": 18
+    },
+    {
+      "source": "安全",
+      "target": "问题",
+      "weight": 10
+    },
+    {
+      "source": "AI",
+      "target": "人类",
+      "weight": 9
+    },
+    {
+      "source": "电脑",
+      "target": "豆包",
+      "weight": 8
+    },
+    {
+      "source": "模型",
+      "target": "能力",
+      "weight": 7
+    },
+    {
+      "source": "上下文",
+      "target": "模型",
+      "weight": 7
+    },
+    {
+      "source": "上下文",
+      "target": "问题",
+      "weight": 7
+    },
+    {
+      "source": "ai",
+      "target": "人类",
+      "weight": 6
+    },
+    {
+      "source": "token",
+      "target": "模型",
+      "weight": 6
+    },
+    {
+      "source": "AI",
+      "target": "能力",
+      "weight": 5
+    },
+    {
+      "source": "AI",
+      "target": "智能",
+      "weight": 5
+    },
+    {
+      "source": "AI",
+      "target": "东西",
+      "weight": 5
+    },
+    {
+      "source": "AI",
+      "target": "小龙虾",
+      "weight": 5
+    },
+    {
+      "source": "ai",
+      "target": "不会",
+      "weight": 5
+    },
+    {
+      "source": "ai",
+      "target": "权限",
+      "weight": 5
+    },
+    {
+      "source": "权限",
+      "target": "隐私",
+      "weight": 5
+    },
+    {
+      "source": "电脑",
+      "target": "病毒",
+      "weight": 4
+    },
+    {
+      "source": "AI",
+      "target": "需要",
+      "weight": 4
+    },
+    {
+      "source": "AI",
+      "target": "模型",
+      "weight": 4
+    },
+    {
+      "source": "ai",
+      "target": "上下文",
+      "weight": 4
+    },
+    {
+      "source": "ai",
+      "target": "代码",
+      "weight": 4
+    },
+    {
+      "source": "ai",
+      "target": "安全",
+      "weight": 4
+    },
+    {
+      "source": "ai",
+      "target": "直接",
+      "weight": 4
+    },
+    {
+      "source": "手机",
+      "target": "电脑",
+      "weight": 4
+    },
+    {
+      "source": "危险",
+      "target": "感觉",
+      "weight": 4
+    },
+    {
+      "source": "skills",
+      "target": "安全",
+      "weight": 4
+    },
+    {
+      "source": "skill",
+      "target": "问题",
+      "weight": 4
+    },
+    {
+      "source": "安全",
+      "target": "感觉",
+      "weight": 3
+    },
+    {
+      "source": "电脑",
+      "target": "直接",
+      "weight": 3
+    },
+    {
+      "source": "AI",
+      "target": "电脑",
+      "weight": 3
+    },
+    {
+      "source": "AI",
+      "target": "不能",
+      "weight": 3
+    },
+    {
+      "source": "AI",
+      "target": "使用",
+      "weight": 3
+    },
+    {
+      "source": "AI",
+      "target": "进化",
+      "weight": 3
+    },
+    {
+      "source": "AI",
+      "target": "记忆",
+      "weight": 3
+    },
+    {
+      "source": "东西",
+      "target": "豆包",
+      "weight": 3
+    },
+    {
+      "source": "问题",
+      "target": "需要",
+      "weight": 3
+    },
+    {
+      "source": "能力",
+      "target": "问题",
+      "weight": 3
+    },
+    {
+      "source": "ai",
+      "target": "skill",
+      "weight": 3
+    },
+    {
+      "source": "感觉",
+      "target": "权限",
+      "weight": 3
+    },
+    {
+      "source": "不会",
+      "target": "安全",
+      "weight": 3
+    },
+    {
+      "source": "人类",
+      "target": "学习",
+      "weight": 3
+    },
+    {
+      "source": "小龙虾",
+      "target": "需要",
+      "weight": 3
+    },
+    {
+      "source": "权限",
+      "target": "电脑",
+      "weight": 3
+    },
+    {
+      "source": "危险",
+      "target": "有点",
+      "weight": 3
+    },
+    {
+      "source": "任务",
+      "target": "权限",
+      "weight": 3
+    },
+    {
+      "source": "模型",
+      "target": "需要",
+      "weight": 3
+    },
+    {
+      "source": "skill",
+      "target": "使用",
+      "weight": 3
+    },
+    {
+      "source": "上下文",
+      "target": "记忆",
+      "weight": 3
+    },
+    {
+      "source": "上下文",
+      "target": "能力",
+      "weight": 3
+    },
+    {
+      "source": "使用",
+      "target": "软件",
+      "weight": 3
+    },
+    {
+      "source": "安全",
+      "target": "隐私",
+      "weight": 2
+    },
+    {
+      "source": "电脑",
+      "target": "隐私",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "不会",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "问题",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "工具",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "上下文",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "病毒",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "指令",
+      "weight": 2
+    },
+    {
+      "source": "AI",
+      "target": "世界",
+      "weight": 2
+    },
+    {
+      "source": "东西",
+      "target": "电脑",
+      "weight": 2
+    },
+    {
+      "source": "东西",
+      "target": "手机",
+      "weight": 2
+    },
+    {
+      "source": "不能",
+      "target": "任务",
+      "weight": 2
+    },
+    {
+      "source": "不能",
+      "target": "权限",
+      "weight": 2
+    },
+    {
+      "source": "问题",
+      "target": "隐私",
+      "weight": 2
+    },
+    {
+      "source": "工具",
+      "target": "智能",
+      "weight": 2
+    },
+    {
+      "source": "工具",
+      "target": "软件",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "学习",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "需要",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "能力",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "不能",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "电脑",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "skills",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "软件",
+      "weight": 2
+    },
+    {
+      "source": "ai",
+      "target": "东西",
+      "weight": 2
+    },
+    {
+      "source": "感觉",
+      "target": "有点",
+      "weight": 2
+    },
+    {
+      "source": "感觉",
+      "target": "豆包",
+      "weight": 2
+    },
+    {
+      "source": "不会",
+      "target": "病毒",
+      "weight": 2
+    },
+    {
+      "source": "不会",
+      "target": "小龙虾",
+      "weight": 2
+    },
+    {
+      "source": "不会",
+      "target": "人类",
+      "weight": 2
+    },
+    {
+      "source": "不会",
+      "target": "直接",
+      "weight": 2
+    },
+    {
+      "source": "智能",
+      "target": "模型",
+      "weight": 2
+    },
+    {
+      "source": "智能",
+      "target": "需要",
+      "weight": 2
+    },
+    {
+      "source": "人类",
+      "target": "指令",
+      "weight": 2
+    },
+    {
+      "source": "人类",
+      "target": "能力",
+      "weight": 2
+    },
+    {
+      "source": "小龙虾",
+      "target": "问题",
+      "weight": 2
+    },
+    {
+      "source": "权限",
+      "target": "需要",
+      "weight": 2
+    },
+    {
+      "source": "权限",
+      "target": "龙虾",
+      "weight": 2
+    },
+    {
+      "source": "权限",
+      "target": "豆包",
+      "weight": 2
+    },
+    {
+      "source": "豆包",
+      "target": "问题",
+      "weight": 2
+    },
+    {
+      "source": "手机",
+      "target": "问题",
+      "weight": 2
+    },
+    {
+      "source": "手机",
+      "target": "权限",
+      "weight": 2
+    },
+    {
+      "source": "token",
+      "target": "权限",
+      "weight": 2
+    },
+    {
+      "source": "token",
+      "target": "隐私",
+      "weight": 2
+    },
+    {
+      "source": "token",
+      "target": "上下文",
+      "weight": 2
+    },
+    {
+      "source": "token",
+      "target": "能力",
+      "weight": 2
+    },
+    {
+      "source": "token",
+      "target": "龙虾",
+      "weight": 2
+    },
+    {
+      "source": "任务",
+      "target": "软件",
+      "weight": 2
+    },
+    {
+      "source": "模型",
+      "target": "隐私",
+      "weight": 2
+    },
+    {
+      "source": "信息",
+      "target": "记忆",
+      "weight": 2
+    }
+  ],
+  "top_cooccurrence_pairs": [
+    {
+      "word1": "手机",
+      "word2": "豆包",
+      "count": 58
+    },
+    {
+      "word1": "模型",
+      "word2": "问题",
+      "count": 18
+    },
+    {
+      "word1": "安全",
+      "word2": "问题",
+      "count": 10
+    },
+    {
+      "word1": "AI",
+      "word2": "人类",
+      "count": 9
+    },
+    {
+      "word1": "电脑",
+      "word2": "豆包",
+      "count": 8
+    },
+    {
+      "word1": "模型",
+      "word2": "能力",
+      "count": 7
+    },
+    {
+      "word1": "上下文",
+      "word2": "模型",
+      "count": 7
+    },
+    {
+      "word1": "上下文",
+      "word2": "问题",
+      "count": 7
+    },
+    {
+      "word1": "ai",
+      "word2": "人类",
+      "count": 6
+    },
+    {
+      "word1": "token",
+      "word2": "模型",
+      "count": 6
+    },
+    {
+      "word1": "AI",
+      "word2": "能力",
+      "count": 5
+    },
+    {
+      "word1": "AI",
+      "word2": "智能",
+      "count": 5
+    },
+    {
+      "word1": "AI",
+      "word2": "东西",
+      "count": 5
+    },
+    {
+      "word1": "AI",
+      "word2": "小龙虾",
+      "count": 5
+    },
+    {
+      "word1": "ai",
+      "word2": "不会",
+      "count": 5
+    },
+    {
+      "word1": "ai",
+      "word2": "权限",
+      "count": 5
+    },
+    {
+      "word1": "权限",
+      "word2": "隐私",
+      "count": 5
+    },
+    {
+      "word1": "电脑",
+      "word2": "病毒",
+      "count": 4
+    },
+    {
+      "word1": "AI",
+      "word2": "需要",
+      "count": 4
+    },
+    {
+      "word1": "AI",
+      "word2": "模型",
+      "count": 4
+    }
+  ],
+  "category_words": {
+    "short": [
+      "AI",
+      "权限",
+      "问题",
+      "ai",
+      "模型",
+      "直接",
+      "人类",
+      "东西",
+      "智能",
+      "不会",
+      "电脑",
+      "能力",
+      "感觉",
+      "需要",
+      "任务",
+      "龙虾",
+      "手机",
+      "软件",
+      "使用",
+      "安全",
+      "工具",
+      "不能",
+      "豆包",
+      "学习",
+      "记忆"
+    ],
+    "neutral": [
+      "skill",
+      "上下文",
+      "openclaw",
+      "token",
+      "小龙虾"
+    ]
+  }
+}

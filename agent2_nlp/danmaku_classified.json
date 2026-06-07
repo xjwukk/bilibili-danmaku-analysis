@@ -1,0 +1,339 @@
+{
+  "total_danmaku": 3515,
+  "type_distribution": {
+    "normal": {
+      "count": 2305,
+      "ratio": 65.58
+    },
+    "question": {
+      "count": 496,
+      "ratio": 14.11
+    },
+    "learn": {
+      "count": 99,
+      "ratio": 2.82
+    },
+    "meme": {
+      "count": 97,
+      "ratio": 2.76
+    },
+    "exclaim": {
+      "count": 419,
+      "ratio": 11.92
+    },
+    "spam": {
+      "count": 47,
+      "ratio": 1.34
+    },
+    "bless": {
+      "count": 4,
+      "ratio": 0.11
+    },
+    "idol": {
+      "count": 24,
+      "ratio": 0.68
+    },
+    "negative": {
+      "count": 24,
+      "ratio": 0.68
+    }
+  },
+  "top_types": [
+    {
+      "type": "normal",
+      "label": "普通类",
+      "count": 2305,
+      "ratio": 65.58,
+      "sample_danmaku": [
+        {
+          "content": "新时代的淘金热和卖铲子",
+          "timestamp": 0.006,
+          "confidence": 1.0
+        },
+        {
+          "content": "安全高管一定要安全",
+          "timestamp": 1.119,
+          "confidence": 1.0
+        },
+        {
+          "content": "niko",
+          "timestamp": 1.684,
+          "confidence": 1.0
+        },
+        {
+          "content": "细节Mac mini",
+          "timestamp": 2.134,
+          "confidence": 1.0
+        },
+        {
+          "content": "养龙虾 多尔衮直接一键三连",
+          "timestamp": 3.316,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "label": "提问类",
+      "count": 496,
+      "ratio": 14.11,
+      "sample_danmaku": [
+        {
+          "content": "平账仙人？？？",
+          "timestamp": 2.47,
+          "confidence": 0.5
+        },
+        {
+          "content": "你不了解他，你就去用他，你自己要担多大的风险，你会AI吗你？",
+          "timestamp": 14.17,
+          "confidence": 0.5
+        },
+        {
+          "content": "碾碎什么?",
+          "timestamp": 14.56,
+          "confidence": 0.5
+        },
+        {
+          "content": "看怎么用了，枪能带来战争也能保护自己",
+          "timestamp": 35.507,
+          "confidence": 0.5
+        },
+        {
+          "content": "那为什么发，讲故事这一块",
+          "timestamp": 56.258,
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "type": "exclaim",
+      "label": "感叹类",
+      "count": 419,
+      "ratio": 11.92,
+      "sample_danmaku": [
+        {
+          "content": "拔电源啊",
+          "timestamp": 9.833,
+          "confidence": 0.4
+        },
+        {
+          "content": "今天坐的好快，看来AI真的一秒都不能耽误啊",
+          "timestamp": 26.304,
+          "confidence": 1.0
+        },
+        {
+          "content": "你好吴恩达老师",
+          "timestamp": 26.789,
+          "confidence": 0.4
+        },
+        {
+          "content": "这不病毒啊",
+          "timestamp": 34.769,
+          "confidence": 0.4
+        },
+        {
+          "content": "我说实话，等AI真正的能够做到生活化的一部分，这种东西才能用",
+          "timestamp": 35.374,
+          "confidence": 0.4
+        }
+      ]
+    },
+    {
+      "type": "learn",
+      "label": "学习类",
+      "count": 99,
+      "ratio": 2.82,
+      "sample_danmaku": [
+        {
+          "content": "每次像这个软件提问 它都在收集数据进行学习 所以不够安全",
+          "timestamp": 6.32,
+          "confidence": 0.5
+        },
+        {
+          "content": "我记得这好像就是一个可以实行你输入的命令的AI，完全掌控你的电脑",
+          "timestamp": 18.76,
+          "confidence": 0.5
+        },
+        {
+          "content": "ai已经开始自主学习了.......................",
+          "timestamp": 73.237,
+          "confidence": 0.5
+        },
+        {
+          "content": "机器学习了 机器学习",
+          "timestamp": 75.702,
+          "confidence": 0.5
+        },
+        {
+          "content": "细说浏览记录",
+          "timestamp": 120.665,
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "type": "meme",
+      "label": "玩梗类",
+      "count": 97,
+      "ratio": 2.76,
+      "sample_danmaku": [
+        {
+          "content": "哈哈",
+          "timestamp": 6.36,
+          "confidence": 0.5
+        },
+        {
+          "content": "拆炸弹笑死",
+          "timestamp": 6.49,
+          "confidence": 1.0
+        },
+        {
+          "content": "哈哈哈哈哈",
+          "timestamp": 10.734,
+          "confidence": 0.5
+        },
+        {
+          "content": "经典程序员为了偷懒做工具2333",
+          "timestamp": 41.971,
+          "confidence": 1.0
+        },
+        {
+          "content": "这梗好玩吗……",
+          "timestamp": 119.003,
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "type": "spam",
+      "label": "刷屏类",
+      "count": 47,
+      "ratio": 1.34,
+      "sample_danmaku": [
+        {
+          "content": "打卡",
+          "timestamp": 14.059,
+          "confidence": 0.5
+        },
+        {
+          "content": "我不行了，全是打卡的",
+          "timestamp": 17.126,
+          "confidence": 0.5
+        },
+        {
+          "content": "？？？？？？沃德发？机械公敌要来了吗",
+          "timestamp": 66.778,
+          "confidence": 0.5
+        },
+        {
+          "content": "天网来了",
+          "timestamp": 68.482,
+          "confidence": 0.5
+        },
+        {
+          "content": "奥创来了",
+          "timestamp": 72.038,
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "type": "idol",
+      "label": "追星类",
+      "count": 24,
+      "ratio": 0.68,
+      "sample_danmaku": [
+        {
+          "content": "爱弥斯",
+          "timestamp": 115.407,
+          "confidence": 0.5
+        },
+        {
+          "content": "可爱捏",
+          "timestamp": 236.32,
+          "confidence": 0.5
+        },
+        {
+          "content": "真的很可爱",
+          "timestamp": 253.84,
+          "confidence": 0.5
+        },
+        {
+          "content": "小人儿有点可爱",
+          "timestamp": 2056832082407617.0,
+          "confidence": 0.5
+        },
+        {
+          "content": "嘿嘿，高一生爱看",
+          "timestamp": 2056850473054784.5,
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "type": "negative",
+      "label": "负面类",
+      "count": 24,
+      "ratio": 0.68,
+      "sample_danmaku": [
+        {
+          "content": "个人认为这玩意又是一泡沫，不过以现在的速度，过两年还差不多可以",
+          "timestamp": 133.873,
+          "confidence": 0.5
+        },
+        {
+          "content": "skills说到底还是提示词，和世界书差不多",
+          "timestamp": 344.413,
+          "confidence": 0.5
+        },
+        {
+          "content": "目前和ADHD患者差不多",
+          "timestamp": 519.712,
+          "confidence": 0.5
+        },
+        {
+          "content": "用 docker，但 docker 的环境实在太烂了",
+          "timestamp": 2056838130132916.0,
+          "confidence": 0.5
+        },
+        {
+          "content": "直接腐烂了",
+          "timestamp": 2056917686139040.2,
+          "confidence": 0.5
+        }
+      ]
+    },
+    {
+      "type": "bless",
+      "label": "祝福类",
+      "count": 4,
+      "ratio": 0.11,
+      "sample_danmaku": [
+        {
+          "content": "元宇宙不吹了？区块链不吹了？加密货币不吹了？加油，使劲庞氏",
+          "timestamp": 18.571,
+          "confidence": 0.5
+        },
+        {
+          "content": "劝你发财你别信，劝你别去你得信",
+          "timestamp": 19.966,
+          "confidence": 0.5
+        },
+        {
+          "content": "甲方的快乐~",
+          "timestamp": 2065810719693921.0,
+          "confidence": 0.5
+        },
+        {
+          "content": "俞净意公遇灶神记 改运电影 祝大家时来运转",
+          "timestamp": 2066234189594326.8,
+          "confidence": 0.5
+        }
+      ]
+    }
+  ],
+  "multi_label_stats": {
+    "single_type": 0,
+    "multi_type": 0
+  }
+}
