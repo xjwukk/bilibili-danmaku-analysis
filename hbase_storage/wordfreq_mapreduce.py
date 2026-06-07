@@ -12,7 +12,7 @@ MapReduce词频统计程序
 
 使用方式：
     # 本地测试模式（无需Hadoop）
-    python wordfreq_mapreduce.py --mode local --input ../agent2_nlp/cleaned_danmaku.json
+    python wordfreq_mapreduce.py --mode local --input ../nlp_processing/cleaned_danmaku.json
 
     # Hadoop集群模式
     hadoop jar /path/to/hadoop-streaming.jar \

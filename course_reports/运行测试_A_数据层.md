@@ -1,6 +1,6 @@
 # 数据层模块 — 运行与测试文档
 
-> **学生A（数据层）**：负责 `agent1_crawler`（爬虫 + 数据清洗）与 `agent3_storage`（HBase 存储 + MapReduce 词频统计）两大模块的运行与测试。
+> **学生A（数据层）**：负责 `bilibili_crawler`（爬虫 + 数据清洗）与 `hbase_storage`（HBase 存储 + MapReduce 词频统计）两大模块的运行与测试。
 >
 > 本文档为**实操 runbook**，逐步指导如何在本地完成端到端的数据通道验证。
 
@@ -41,7 +41,7 @@ python --version   # 应显示 Python 3.7.x 或更高
 cd "F:\Claude Project\大数据应用系统开发实践"
 
 # 爬虫依赖
-pip install -r agent1_crawler/requirements.txt
+pip install -r bilibili_crawler/requirements.txt
 # 等价于：pip install requests>=2.28.0
 
 # HBase 客户端依赖（若使用真实 HBase 模式）
@@ -50,7 +50,7 @@ pip install happybase thrift
 
 ### 1.4 可选：HBase 环境
 
-若没有 HBase 集群，可使用项目自带的 `hbase_simulator.py` 在内存中模拟，**不影响功能验证**。完整环境请参考 [agent3_storage/HBASE_SCHEMA.md](agent3_storage/HBASE_SCHEMA.md) 与 [agent3_storage/README.md](agent3_storage/README.md)。
+若没有 HBase 集群，可使用项目自带的 `hbase_simulator.py` 在内存中模拟，**不影响功能验证**。完整环境请参考 [hbase_storage/HBASE_SCHEMA.md](hbase_storage/HBASE_SCHEMA.md) 与 [hbase_storage/README.md](hbase_storage/README.md)。
 
 真实 HBase 启动（仅供有 Hadoop 环境的同学）：
 
@@ -72,7 +72,7 @@ create 'wordfreq_data',   'stats'
 1. 登录 [B 站](https://www.bilibili.com)
 2. F12 → Network → 找到 `www.bilibili.com` 请求
 3. 复制请求头中的完整 Cookie 字段
-4. 粘贴到 [agent1_crawler/bilibili_crawler_v3.py:23](agent1_crawler/bilibili_crawler_v3.py#L23) 的 `COOKIE` 变量
+4. 粘贴到 [bilibili_crawler/bilibili_crawler_v3.py:23](bilibili_crawler/bilibili_crawler_v3.py#L23) 的 `COOKIE` 变量
 
 ---
 
@@ -80,14 +80,14 @@ create 'wordfreq_data',   'stats'
 
 | 文件 | 作用 | 必跑 |
 |------|------|------|
-| `agent1_crawler/bilibili_crawler_v3.py` | B 站 API 爬虫（视频信息 + Protobuf 弹幕 + XML 备用） | ✅ |
-| `agent2_nlp/clean_danmaku.py` | 弹幕清洗（特殊字符、纯数字/纯符号、繁简转换、去重） | ✅ |
-| `agent3_storage/hbase_writer.py` | 写入 HBase 三张表（视频信息/弹幕/词频） | ⭕ 真实模式 |
-| `agent3_storage/hbase_simulator.py` | 内存模拟 HBase 写入/查询（无需 HBase） | ✅ 起步 |
-| `agent3_storage/hbase_query.py` | HBase 时间范围查询 | ⭕ 真实模式 |
-| `agent3_storage/wordfreq_mapreduce.py` | MapReduce 词频统计 | ⭕ 真实模式 |
-| `agent1_crawler/bilibili_data.json` | 爬虫输出（视频信息 + 原始弹幕） | 产物 |
-| `agent2_nlp/cleaned_danmaku.json` | 清洗后弹幕 | 产物 |
+| `bilibili_crawler/bilibili_crawler_v3.py` | B 站 API 爬虫（视频信息 + Protobuf 弹幕 + XML 备用） | ✅ |
+| `nlp_processing/clean_danmaku.py` | 弹幕清洗（特殊字符、纯数字/纯符号、繁简转换、去重） | ✅ |
+| `hbase_storage/hbase_writer.py` | 写入 HBase 三张表（视频信息/弹幕/词频） | ⭕ 真实模式 |
+| `hbase_storage/hbase_simulator.py` | 内存模拟 HBase 写入/查询（无需 HBase） | ✅ 起步 |
+| `hbase_storage/hbase_query.py` | HBase 时间范围查询 | ⭕ 真实模式 |
+| `hbase_storage/wordfreq_mapreduce.py` | MapReduce 词频统计 | ⭕ 真实模式 |
+| `bilibili_crawler/bilibili_data.json` | 爬虫输出（视频信息 + 原始弹幕） | 产物 |
+| `nlp_processing/cleaned_danmaku.json` | 清洗后弹幕 | 产物 |
 
 > **实操建议**：第一次跑通时只用 `bilibili_crawler_v3.py` + `clean_danmaku.py` + `hbase_simulator.py`，三者即可完成完整数据通道验证，不依赖 HBase。
 
@@ -98,13 +98,13 @@ create 'wordfreq_data',   'stats'
 ### 3.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent1_crawler"
+cd "F:\Claude Project\大数据应用系统开发实践\bilibili_crawler"
 python bilibili_crawler_v3.py
 ```
 
 ### 3.2 预期输出
 
-成功时屏幕打印（与 [报告A 4.2.1 节](../agent5_report/报告A_数据层.md) 一致）：
+成功时屏幕打印（与 [报告A 4.2.1 节](../course_reports/报告A_数据层.md) 一致）：
 
 ```
 ============================================================
@@ -130,7 +130,7 @@ B站弹幕爬虫 - 重构版
 
 ### 3.3 产物检查
 
-- **生成文件**：`agent1_crawler/bilibili_data.json`（约 1.3 MB）
+- **生成文件**：`bilibili_crawler/bilibili_data.json`（约 1.3 MB）
 - **结构**：
   ```json
   {
@@ -162,13 +162,13 @@ B站弹幕爬虫 - 重构版
 
 ```bash
 # 查看 JSON 前 30 行
-head -30 agent1_crawler/bilibili_data.json
+head -30 bilibili_crawler/bilibili_data.json
 
 # 弹幕数量
-python -c "import json; d=json.load(open('agent1_crawler/bilibili_data.json',encoding='utf-8')); print('danmaku:', len(d['danmaku_list']))"
+python -c "import json; d=json.load(open('bilibili_crawler/bilibili_data.json',encoding='utf-8')); print('danmaku:', len(d['danmaku_list']))"
 
 # 唯一 dmid 数量
-python -c "import json; d=json.load(open('agent1_crawler/bilibili_data.json',encoding='utf-8')); ids=[dm['dmid'] for dm in d['danmaku_list']]; print('unique:', len(set(ids)), 'total:', len(ids))"
+python -c "import json; d=json.load(open('bilibili_crawler/bilibili_data.json',encoding='utf-8')); ids=[dm['dmid'] for dm in d['danmaku_list']]; print('unique:', len(set(ids)), 'total:', len(ids))"
 ```
 
 ---
@@ -178,7 +178,7 @@ python -c "import json; d=json.load(open('agent1_crawler/bilibili_data.json',enc
 ### 4.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python clean_danmaku.py
 ```
 
@@ -206,7 +206,7 @@ python clean_danmaku.py
 
 ### 4.3 产物检查
 
-- **生成文件**：`agent2_nlp/cleaned_danmaku.json`
+- **生成文件**：`nlp_processing/cleaned_danmaku.json`
 - **结构**：
   ```json
   {
@@ -232,10 +232,10 @@ python clean_danmaku.py
 
 ```bash
 # 清洗后条数
-python -c "import json; d=json.load(open('agent2_nlp/cleaned_danmaku.json',encoding='utf-8')); print('cleaned:', len(d['danmaku_list']))"
+python -c "import json; d=json.load(open('nlp_processing/cleaned_danmaku.json',encoding='utf-8')); print('cleaned:', len(d['danmaku_list']))"
 
 # 验证无空内容/纯空白
-python -c "import json; d=json.load(open('agent2_nlp/cleaned_danmaku.json',encoding='utf-8')); bad=[x for x in d['danmaku_list'] if not x['content'].strip()]; print('empty:', len(bad))"
+python -c "import json; d=json.load(open('nlp_processing/cleaned_danmaku.json',encoding='utf-8')); bad=[x for x in d['danmaku_list'] if not x['content'].strip()]; print('empty:', len(bad))"
 ```
 
 ### 4.6 跨模块数据契约
@@ -269,16 +269,16 @@ hbase shell
 ### 5.2 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent3_storage"
+cd "F:\Claude Project\大数据应用系统开发实践\hbase_storage"
 
 # 写入视频信息
-python hbase_writer.py --mode video --input ../agent1_crawler/bilibili_data.json
+python hbase_writer.py --mode video --input ../bilibili_crawler/bilibili_data.json
 
 # 写入清洗后弹幕
-python hbase_writer.py --mode danmaku --input ../agent2_nlp/cleaned_danmaku.json
+python hbase_writer.py --mode danmaku --input ../nlp_processing/cleaned_danmaku.json
 
 # 写入词频统计（来自 NLP 输出）
-python hbase_writer.py --mode wordfreq --input ../agent2_nlp/wordfreq.json
+python hbase_writer.py --mode wordfreq --input ../nlp_processing/wordfreq.json
 ```
 
 ### 5.3 预期输出
@@ -314,13 +314,13 @@ python hbase_writer.py --mode wordfreq --input ../agent2_nlp/wordfreq.json
 ### 6.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent3_storage"
+cd "F:\Claude Project\大数据应用系统开发实践\hbase_storage"
 
 # Demo 模式：自带示例数据
 python hbase_simulator.py --mode demo
 
 # Test 模式：使用真实清洗数据
-python hbase_simulator.py --mode test --input ../agent2_nlp/cleaned_danmaku.json
+python hbase_simulator.py --mode test --input ../nlp_processing/cleaned_danmaku.json
 ```
 
 ### 6.2 预期输出
@@ -354,7 +354,7 @@ HBase 模拟器 - Demo 模式
 ```python
 # Python 内联验证
 import sys
-sys.path.insert(0, 'agent3_storage')
+sys.path.insert(0, 'hbase_storage')
 from hbase_simulator import HBaseSimulator
 
 sim = HBaseSimulator()
@@ -371,7 +371,7 @@ print('Range query:', sim.query_danmaku_by_timerange('BV1', 0, 100))  # 1 条
 ### 7.1 真实 HBase 模式
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent3_storage"
+cd "F:\Claude Project\大数据应用系统开发实践\hbase_storage"
 python hbase_query.py --bv BV1jEAaz3E6K --start 0 --end 60
 ```
 
@@ -407,8 +407,8 @@ python hbase_query.py --mode sim --bv BV1jEAaz3E6K --start 0 --end 60
 ### 8.1 本地模式（无需 Hadoop）
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent3_storage"
-python wordfreq_mapreduce.py --mode local --input ../agent2_nlp/cleaned_danmaku.json
+cd "F:\Claude Project\大数据应用系统开发实践\hbase_storage"
+python wordfreq_mapreduce.py --mode local --input ../nlp_processing/cleaned_danmaku.json
 ```
 
 ### 8.2 预期输出
@@ -420,7 +420,7 @@ python wordfreq_mapreduce.py --mode local --input ../agent2_nlp/cleaned_danmaku.
 [Shuffle] 聚合相同 word...
 [Reduce]  输出 Top 100 词频
 [Result]  AI: 142, 权限: 87, 模型: 76, token: 65, ...
-[Write]   保存到 ../agent2_nlp/wordfreq_mapreduce.json
+[Write]   保存到 ../nlp_processing/wordfreq_mapreduce.json
 ```
 
 ### 8.3 Hadoop 集群模式（可选）
@@ -448,7 +448,7 @@ hadoop jar wordfreq_mapreduce.jar \
 
 ### 9.1 测试脚本
 
-将以下命令保存为 `agent5_report/run_e2e_A.sh`（或逐行复制）：
+将以下命令保存为 `course_reports/run_e2e_A.sh`（或逐行复制）：
 
 ```bash
 #!/bin/bash
@@ -456,19 +456,19 @@ set -e
 ROOT="F:\Claude Project\大数据应用系统开发实践"
 
 echo "==== 1. 爬虫采集 ===="
-cd "$ROOT/agent1_crawler"
+cd "$ROOT/bilibili_crawler"
 python bilibili_crawler_v3.py
 
 echo "==== 2. 数据清洗 ===="
-cd "$ROOT/agent2_nlp"
+cd "$ROOT/nlp_processing"
 python clean_danmaku.py
 
 echo "==== 3. HBase 模拟器测试 ===="
-cd "$ROOT/agent3_storage"
-python hbase_simulator.py --mode test --input ../agent2_nlp/cleaned_danmaku.json
+cd "$ROOT/hbase_storage"
+python hbase_simulator.py --mode test --input ../nlp_processing/cleaned_danmaku.json
 
 echo "==== 4. MapReduce 词频统计 ===="
-python wordfreq_mapreduce.py --mode local --input ../agent2_nlp/cleaned_danmaku.json
+python wordfreq_mapreduce.py --mode local --input ../nlp_processing/cleaned_danmaku.json
 
 echo "==== 全部完成 ✓ ===="
 ```
@@ -477,15 +477,15 @@ echo "==== 全部完成 ✓ ===="
 
 ```bash
 cd "F:\Claude Project\大数据应用系统开发实践"
-bash agent5_report/run_e2e_A.sh
+bash course_reports/run_e2e_A.sh
 ```
 
 ### 9.3 联调通过标准
 
 | 阶段 | 关键产物 | 通过条件 |
 |------|---------|---------|
-| 爬虫 | `agent1_crawler/bilibili_data.json` | 存在 + 包含 video_info 与 danmaku_list |
-| 清洗 | `agent2_nlp/cleaned_danmaku.json` | 存在 + danmaku_list 长度 3000~4000 |
+| 爬虫 | `bilibili_crawler/bilibili_data.json` | 存在 + 包含 video_info 与 danmaku_list |
+| 清洗 | `nlp_processing/cleaned_danmaku.json` | 存在 + danmaku_list 长度 3000~4000 |
 | HBase 模拟 | 模拟器返回非空结果 | 写入 3515 条 + 范围查询有数据 |
 | MapReduce | `wordfreq_mapreduce.json` | 存在 + Top 100 不为空 |
 
@@ -494,7 +494,7 @@ bash agent5_report/run_e2e_A.sh
 1. **爬虫返回 0 条** → 检查 Cookie；无 Cookie 至少能拿到 XML 部分
 2. **清洗文件找不到** → 先确认上一步 `bilibili_data.json` 已生成
 3. **HBase 连接失败** → 改用 `hbase_simulator.py` 验证后续逻辑
-4. **MapReduce jieba 报错** → 单独 `pip install jieba`，确认 `cn_stopwords.txt` 在 `agent2_nlp/`
+4. **MapReduce jieba 报错** → 单独 `pip install jieba`，确认 `cn_stopwords.txt` 在 `nlp_processing/`
 
 ---
 
@@ -541,13 +541,13 @@ bash agent5_report/run_e2e_A.sh
 
 | 文件 | 路径 |
 |------|------|
-| 爬虫主程序 | [agent1_crawler/bilibili_crawler_v3.py](../agent1_crawler/bilibili_crawler_v3.py) |
-| 清洗模块 | [agent2_nlp/clean_danmaku.py](../agent2_nlp/clean_danmaku.py) |
-| 停用词表 | [agent2_nlp/cn_stopwords.txt](../agent2_nlp/cn_stopwords.txt) |
-| HBase 写入 | [agent3_storage/hbase_writer.py](../agent3_storage/hbase_writer.py) |
-| HBase 查询 | [agent3_storage/hbase_query.py](../agent3_storage/hbase_query.py) |
-| HBase 模拟器 | [agent3_storage/hbase_simulator.py](../agent3_storage/hbase_simulator.py) |
-| MapReduce 词频 | [agent3_storage/wordfreq_mapreduce.py](../agent3_storage/wordfreq_mapreduce.py) |
-| HBase 表结构 | [agent3_storage/HBASE_SCHEMA.md](../agent3_storage/HBASE_SCHEMA.md) |
-| 存储设计文档 | [agent3_storage/README.md](../agent3_storage/README.md) |
+| 爬虫主程序 | [bilibili_crawler/bilibili_crawler_v3.py](../bilibili_crawler/bilibili_crawler_v3.py) |
+| 清洗模块 | [nlp_processing/clean_danmaku.py](../nlp_processing/clean_danmaku.py) |
+| 停用词表 | [nlp_processing/cn_stopwords.txt](../nlp_processing/cn_stopwords.txt) |
+| HBase 写入 | [hbase_storage/hbase_writer.py](../hbase_storage/hbase_writer.py) |
+| HBase 查询 | [hbase_storage/hbase_query.py](../hbase_storage/hbase_query.py) |
+| HBase 模拟器 | [hbase_storage/hbase_simulator.py](../hbase_storage/hbase_simulator.py) |
+| MapReduce 词频 | [hbase_storage/wordfreq_mapreduce.py](../hbase_storage/wordfreq_mapreduce.py) |
+| HBase 表结构 | [hbase_storage/HBASE_SCHEMA.md](../hbase_storage/HBASE_SCHEMA.md) |
+| 存储设计文档 | [hbase_storage/README.md](../hbase_storage/README.md) |
 | 课程设计报告 | [报告A_数据层.md](报告A_数据层.md) |

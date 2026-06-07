@@ -240,7 +240,7 @@
     {"type": "p", "text": "组件层次：① 页面层（index.html / charts.html）；② 数据服务层（js/data.js）；③ 图表组件层（js/wordcloud.js / js/charts.js / js/timeline.js）。"},
 
     {"type": "h2", "text": "5.2 DataService动态加载"},
-    {"type": "code", "lang": "javascript", "text": "class DataService {\n    constructor(basePath = '') {\n        this.basePath = basePath || this.getBasePath();\n        this._cache = {};\n    }\n    async loadJSON(filename) {\n        if (this._cache[filename]) return this._cache[filename];\n        const response = await fetch(this.basePath + filename);\n        const data = await response.json();\n        this._cache[filename] = data;\n        return data;\n    }\n    async loadAll() {\n        const [wordfreq, sentiment, timeDist, userBehavior] = await Promise.all([\n            this.loadJSON('../agent2_nlp/wordfreq.json'),\n            this.loadJSON('../agent2_nlp/sentiment.json'),\n            this.loadJSON('../agent2_nlp/danmaku_time_distribution.json'),\n            this.loadJSON('../agent2_nlp/user_behavior.json'),\n        ]);\n        return { wordfreq, sentiment, timeDist, userBehavior };\n    }\n}"},
+    {"type": "code", "lang": "javascript", "text": "class DataService {\n    constructor(basePath = '') {\n        this.basePath = basePath || this.getBasePath();\n        this._cache = {};\n    }\n    async loadJSON(filename) {\n        if (this._cache[filename]) return this._cache[filename];\n        const response = await fetch(this.basePath + filename);\n        const data = await response.json();\n        this._cache[filename] = data;\n        return data;\n    }\n    async loadAll() {\n        const [wordfreq, sentiment, timeDist, userBehavior] = await Promise.all([\n            this.loadJSON('../nlp_processing/wordfreq.json'),\n            this.loadJSON('../nlp_processing/sentiment.json'),\n            this.loadJSON('../nlp_processing/danmaku_time_distribution.json'),\n            this.loadJSON('../nlp_processing/user_behavior.json'),\n        ]);\n        return { wordfreq, sentiment, timeDist, userBehavior };\n    }\n}"},
     {"type": "p", "text": "DataService 内置缓存，避免重复请求；通过Promise.all 并行加载所有NLP输出文件，显著缩短首屏等待时间。"},
 
     {"type": "h2", "text": "5.3 词云组件"},
@@ -273,10 +273,10 @@
 
     {"type": "h1", "text": "第六章 运行及测试"},
     {"type": "h2", "text": "6.1 运行脚本"},
-    {"type": "code", "lang": "bash", "text": "cd agent2_nlp\n# 基础NLP流程\npython nlp_process.py                # 词频统计 + LDA\npython sentiment_lexicon.py          # 情感分析\n# 增强NLP模块\npython segmentation.py               # pkuseg分词\npython sentiment_enhanced.py         # 增强情感分析\npython ner_recognition.py            # NER实体识别\n# 高级分析模块\npython danmaku_time_distribution.py  # 时间分布\npython user_behavior_analysis.py     # 用户行为\npython sentiment_trend.py            # 情感趋势\npython danmaku_classifier.py         # 类型分类\npython keyword_extraction.py         # 关键词抽取\npython word_cooccurrence.py          # 共现网络"},
+    {"type": "code", "lang": "bash", "text": "cd nlp_processing\n# 基础NLP流程\npython nlp_process.py                # 词频统计 + LDA\npython sentiment_lexicon.py          # 情感分析\n# 增强NLP模块\npython segmentation.py               # pkuseg分词\npython sentiment_enhanced.py         # 增强情感分析\npython ner_recognition.py            # NER实体识别\n# 高级分析模块\npython danmaku_time_distribution.py  # 时间分布\npython user_behavior_analysis.py     # 用户行为\npython sentiment_trend.py            # 情感趋势\npython danmaku_classifier.py         # 类型分类\npython keyword_extraction.py         # 关键词抽取\npython word_cooccurrence.py          # 共现网络"},
 
     {"type": "h2", "text": "6.2 前端运行"},
-    {"type": "code", "lang": "bash", "text": "# 启动HTTP服务器\ncd agent4_frontend\npython -m http.server 8080\n\n# 访问页面\n# http://localhost:8080/index.html   # 词云页\n# http://localhost:8080/charts.html  # 统计页"},
+    {"type": "code", "lang": "bash", "text": "# 启动HTTP服务器\ncd web_frontend\npython -m http.server 8080\n\n# 访问页面\n# http://localhost:8080/index.html   # 词云页\n# http://localhost:8080/charts.html  # 统计页"},
 
     {"type": "h2", "text": "6.3 测试结果"},
     {"type": "h3", "text": "6.3.1 分词测试"},

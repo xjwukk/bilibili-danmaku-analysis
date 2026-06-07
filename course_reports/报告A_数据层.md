@@ -45,13 +45,13 @@
 B站公开API
    │  video_info  /  protobuf弹幕  /  XML弹幕(备用)
    ▼
-agent1_crawler/bilibili_crawler.py
+bilibili_crawler/bilibili_crawler.py
    │  bilibili_data.json  (5656条)
    ▼
-agent1_crawler/clean_danmaku.py  (本报告)
+bilibili_crawler/clean_danmaku.py  (本报告)
    │  cleaned_danmaku.json  (3515条)
    ▼
-agent3_storage/hbase_writer.py  (本报告)
+hbase_storage/hbase_writer.py  (本报告)
    │  HBase表: video_info / danmaku_data / wordfreq_data
    ▼
 应用层（学生B） 读取 JSON / HBase 进行 NLP 与可视化
@@ -542,9 +542,9 @@ Python 3.7+
 pip install requests happybase jieba
 
 # 代码文件
-agent1_crawler/bilibili_crawler.py
-agent1_crawler/clean_danmaku.py
-agent3_storage/hbase_writer.py
+bilibili_crawler/bilibili_crawler.py
+bilibili_crawler/clean_danmaku.py
+hbase_storage/hbase_writer.py
 ```
 
 #### 4.1.2 Cookie配置
@@ -583,12 +583,12 @@ create 'wordfreq_data', 'stats'
 
 ```bash
 # 1. 爬虫采集
-cd agent1_crawler
+cd bilibili_crawler
 python bilibili_crawler.py        # → bilibili_data.json
 python clean_danmaku.py           # → cleaned_danmaku.json
 
 # 2. 写入HBase
-cd ../agent3_storage
+cd ../hbase_storage
 python hbase_writer.py            # 写入 video_info / danmaku_data / wordfreq_data
 ```
 

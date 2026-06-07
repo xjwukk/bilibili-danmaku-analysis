@@ -13,7 +13,7 @@ import os
 # 配置
 # ============================================================
 BASE_DIR = 'F:/Claude project/大数据应用系统开发实践'
-NLP_DIR = os.path.join(BASE_DIR, 'agent2_nlp')
+NLP_DIR = os.path.join(BASE_DIR, 'nlp_processing')
 LEXICON_DIR = os.path.join(NLP_DIR, 'lexicons')
 
 os.makedirs(LEXICON_DIR, exist_ok=True)

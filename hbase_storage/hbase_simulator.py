@@ -10,7 +10,7 @@ HBase环境检查和模拟测试工具
 
 使用方式：
     python hbase_simulator.py --mode demo
-    python hbase_simulator.py --mode test --input ../agent2_nlp/cleaned_danmaku.json
+    python hbase_simulator.py --mode test --input ../nlp_processing/cleaned_danmaku.json
 """
 
 import json

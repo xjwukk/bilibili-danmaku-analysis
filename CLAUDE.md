@@ -11,21 +11,21 @@ This is a course project for "大数据应用系统开发实践" (Big Data Appli
 ## Architecture
 
 ```
-agent1_crawler/     - Bilibili video & danmaku crawler
-agent2_nlp/         - NLP processing (cleaning, word frequency, sentiment, LDA, wordcloud)
-agent3_storage/     - HBase persistent storage design
-agent4_frontend/    - Web visualization (ECharts wordcloud & charts)
-agent5_report/     - Course design reports (3 students)
+bilibili_crawler/     - Bilibili video & danmaku crawler
+nlp_processing/         - NLP processing (cleaning, word frequency, sentiment, LDA, wordcloud)
+hbase_storage/     - HBase persistent storage design
+web_frontend/    - Web visualization (ECharts wordcloud & charts)
+course_reports/     - Course design reports (3 students)
 ```
 
 ## Running the Crawler
 
-The main crawler is `agent1_crawler/bilibili_crawler.py`. It requires:
+The main crawler is `bilibili_crawler/bilibili_crawler.py`. It requires:
 1. Valid Bilibili SESSDATA cookie in the COOKIE variable (line ~13)
 2. Python 3.7+ with `requests` library
 
 ```bash
-cd agent1_crawler
+cd bilibili_crawler
 python bilibili_crawler.py
 ```
 
@@ -33,7 +33,7 @@ Output: `bilibili_data.json` with video_info and danmaku_list (~3600-4500 danmak
 
 ## NLP Pipeline
 
-The NLP module (`agent2_nlp/`) has a multi-stage pipeline:
+The NLP module (`nlp_processing/`) has a multi-stage pipeline:
 
 | Stage | File | Purpose |
 |-------|------|---------|
@@ -45,7 +45,7 @@ The NLP module (`agent2_nlp/`) has a multi-stage pipeline:
 
 Running the full NLP pipeline:
 ```bash
-cd agent2_nlp
+cd nlp_processing
 python clean_danmaku.py   # → cleaned_danmaku.json
 python nlp_process.py    # → wordfreq.json
 python sentiment_lexicon.py   # → sentiment.json, positive_danmakus.json, negative_danmakus.json
@@ -65,16 +65,16 @@ python sentiment_distribution.py  # → sentiment_distribution.png
 
 | File | Purpose |
 |------|---------|
-| `agent1_crawler/bilibili_crawler.py` | Main crawler with protobuf parsing |
-| `agent1_crawler/bilibili_data.json` | Crawled data (video + danmaku, ~1.4MB) |
-| `agent2_nlp/nlp_process.py` | Chinese segmentation, stopword filtering |
-| `agent2_nlp/sentiment_lexicon.py` | SnowNLP sentiment scoring |
-| `agent2_nlp/lda_sentiment_topics.py` | Gensim LDA topic modeling |
-| `agent2_nlp/wordfreq.json` | Word frequency statistics |
-| `agent2_nlp/cleaned_danmaku.json` | Cleaned danmaku data |
-| `agent3_storage/hbase_writer.py` | HBase data writer |
-| `agent4_frontend/index.html` | Wordcloud visualization page |
-| `agent4_frontend/charts.html` | Sentiment distribution charts |
+| `bilibili_crawler/bilibili_crawler.py` | Main crawler with protobuf parsing |
+| `bilibili_crawler/bilibili_data.json` | Crawled data (video + danmaku, ~1.4MB) |
+| `nlp_processing/nlp_process.py` | Chinese segmentation, stopword filtering |
+| `nlp_processing/sentiment_lexicon.py` | SnowNLP sentiment scoring |
+| `nlp_processing/lda_sentiment_topics.py` | Gensim LDA topic modeling |
+| `nlp_processing/wordfreq.json` | Word frequency statistics |
+| `nlp_processing/cleaned_danmaku.json` | Cleaned danmaku data |
+| `hbase_storage/hbase_writer.py` | HBase data writer |
+| `web_frontend/index.html` | Wordcloud visualization page |
+| `web_frontend/charts.html` | Sentiment distribution charts |
 
 ## Bilibili API Notes
 
@@ -85,6 +85,6 @@ python sentiment_distribution.py  # → sentiment_distribution.png
 
 ## Report Templates
 
-Two student reports in `agent5_report/`, divided by data layer / application layer:
+Two student reports in `course_reports/`, divided by data layer / application layer:
 - 报告A_数据层.md (Student A - Crawler, Data Cleaning, HBase Storage)
 - 报告B_应用层.md (Student B - NLP Processing, ECharts Frontend Visualization)

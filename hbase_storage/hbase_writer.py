@@ -12,9 +12,9 @@ HBase弹幕数据写入工具
 - thrift: pip install thrift
 
 使用方式：
-    python hbase_writer.py --mode danmaku --input ../agent2_nlp/cleaned_danmaku.json
-    python hbase_writer.py --mode video --input ../agent1_crawler/bilibili_data.json
-    python hbase_writer.py --mode wordfreq --input ../agent2_nlp/wordfreq.json
+    python hbase_writer.py --mode danmaku --input ../nlp_processing/cleaned_danmaku.json
+    python hbase_writer.py --mode video --input ../bilibili_crawler/bilibili_data.json
+    python hbase_writer.py --mode wordfreq --input ../nlp_processing/wordfreq.json
 """
 
 import json

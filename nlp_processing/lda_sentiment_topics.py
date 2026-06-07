@@ -16,7 +16,7 @@ from snownlp import SnowNLP
 # 配置路径
 # ============================================================
 BASE_DIR = 'F:/Claude project/大数据应用系统开发实践'
-NLP_DIR = os.path.join(BASE_DIR, 'agent2_nlp')
+NLP_DIR = os.path.join(BASE_DIR, 'nlp_processing')
 STOPWORDS_FILE = os.path.join(NLP_DIR, 'cn_stopwords.txt')
 
 # 加载停用词

@@ -18,14 +18,14 @@
 ├── 项目优化文档.md                      # 项目优化计划文档
 ├── 参考.md                            # 参考资料
 │
-├── agent1_crawler/                    # 数据采集模块
+├── bilibili_crawler/                    # 数据采集模块
 │   ├── README.md                      # 爬虫说明文档
 │   ├── bilibili_crawler.py            # 爬虫主程序（早期版本）
 │   ├── bilibili_crawler_v3.py         # 爬虫主程序（最新版本）
 │   ├── bilibili_data.json             # 爬取的原始数据
 │   └── requirements.txt               # Python依赖
 │
-├── agent2_nlp/                        # NLP处理模块
+├── nlp_processing/                        # NLP处理模块
 │   ├── clean_danmaku.py               # 数据清洗
 │   ├── segmentation.py                 # 中文分词（pkuseg/jieba）
 │   ├── nlp_process.py                 # NLP综合处理流水线
@@ -48,7 +48,7 @@
 │   ├── ner_entities.json              # NER实体识别结果
 │   ├── sentiment_distribution.json    # 情感分布统计
 │
-├── agent3_storage/                     # 大数据存储模块
+├── hbase_storage/                     # 大数据存储模块
 │   ├── README.md                      # 存储方案说明
 │   ├── HBASE_SCHEMA.md                # HBase表结构设计
 │   ├── hbase_writer.py               # 数据写入工具
@@ -56,7 +56,7 @@
 │   ├── hbase_simulator.py            # HBase模拟测试工具
 │   └── wordfreq_mapreduce.py         # MapReduce词频统计
 │
-├── agent4_frontend/                    # 前端可视化模块
+├── web_frontend/                    # 前端可视化模块
 │   ├── index.html                    # 主页面
 │   ├── css/
 │   │   └── style.css                # Kaggle风格样式
@@ -66,7 +66,7 @@
 │       ├── wordcloud.js              # 词云组件
 │       └── timeline.js                # 时间轴组件
 │
-├── agent5_report/                      # 课程设计报告
+├── course_reports/                      # 课程设计报告
 │   ├── 报告A_数据层.md                # 学生A报告（爬虫+数据清洗+HBase存储）
 │   └── 报告B_应用层.md                # 学生B报告（NLP处理+前端可视化）
 │
@@ -80,11 +80,11 @@
 
 | 模块 | 负责学生 | 主要职责 |
 |------|---------|---------|
-| agent1_crawler | 学生A（数据层） | B站API爬虫、Protobuf解析、数据清洗 |
-| agent3_storage | 学生A（数据层） | HBase表设计、数据读写、MapReduce |
-| agent2_nlp | 学生B（应用层） | 分词、词频统计、情感分析、LDA主题、NER、关键词抽取、词云生成 |
-| agent4_frontend | 学生B（应用层） | ECharts词云、统计图表、前端交互 |
-| agent5_report | 全体 | 学生A撰写数据层报告，学生B撰写应用层报告 |
+| bilibili_crawler | 学生A（数据层） | B站API爬虫、Protobuf解析、数据清洗 |
+| hbase_storage | 学生A（数据层） | HBase表设计、数据读写、MapReduce |
+| nlp_processing | 学生B（应用层） | 分词、词频统计、情感分析、LDA主题、NER、关键词抽取、词云生成 |
+| web_frontend | 学生B（应用层） | ECharts词云、统计图表、前端交互 |
+| course_reports | 全体 | 学生A撰写数据层报告，学生B撰写应用层报告 |
 
 ---
 
@@ -93,7 +93,7 @@
 ### 1. 数据采集
 
 ```bash
-cd agent1_crawler
+cd bilibili_crawler
 # 配置Cookie后运行
 python bilibili_crawler_v3.py
 ```
@@ -101,7 +101,7 @@ python bilibili_crawler_v3.py
 ### 2. NLP处理
 
 ```bash
-cd agent2_nlp
+cd nlp_processing
 
 # 基础NLP流程
 python clean_danmaku.py           # 清洗弹幕
@@ -117,7 +117,7 @@ python keyword_extraction.py     # 关键词抽取
 ### 3. 前端展示
 
 ```bash
-cd agent4_frontend
+cd web_frontend
 python -m http.server 8080
 # 访问 http://localhost:8080/index.html
 ```
@@ -131,7 +131,7 @@ B站视频
     │
     ▼
 ┌─────────────┐    bilibili_data.json
-│ 爬虫采集    │ ──────────────────► agent2_nlp/
+│ 爬虫采集    │ ──────────────────► nlp_processing/
 └─────────────┘                      │
                                      ▼
                               ┌───────────┐
@@ -152,7 +152,7 @@ B站视频
                                            └──────────────┘
                                                  │
                                                  ▼
-                                          agent4_frontend/
+                                          web_frontend/
                                           (前端可视化)
 ```
 

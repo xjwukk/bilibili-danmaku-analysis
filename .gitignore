@@ -10,8 +10,8 @@ build/
 # Large data files
 *.zip
 *.csv
-!agent2_nlp/*.json
-!agent1_crawler/bilibili_data.json
+!nlp_processing/*.json
+!bilibili_crawler/bilibili_data.json
 
 # Models
 *.marshal.*

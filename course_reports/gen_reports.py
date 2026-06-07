@@ -12,7 +12,7 @@ from docx.enum.table import WD_ALIGN_VERTICAL
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-OUT_DIR = r"f:\Claude Project\大数据应用系统开发实践\agent5_report"
+OUT_DIR = r"f:\Claude Project\大数据应用系统开发实践\course_reports"
 FONT_HEITI = "黑体"
 FONT_SONGTI = "宋体"
 FONT_EN = "Times New Roman"

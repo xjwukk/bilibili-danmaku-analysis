@@ -25,7 +25,7 @@ from sentiment_lexicon import SentimentAnalyzer, build_combined_lexicon, get_neg
 # 配置路径
 # ============================================================
 BASE_DIR = 'F:/Claude project/大数据应用系统开发实践'
-NLP_DIR = os.path.join(BASE_DIR, 'agent2_nlp')
+NLP_DIR = os.path.join(BASE_DIR, 'nlp_processing')
 CLEANED_DATA_PATH = os.path.join(NLP_DIR, 'cleaned_danmaku.json')
 
 # 词云字体路径（Windows系统SimHei字体）

@@ -570,10 +570,10 @@ class DataService {
     async loadAll() {
         // 异步加载所有NLP输出文件
         const [wordfreq, sentiment, timeDist, userBehavior, ...] = await Promise.all([
-            this.loadJSON('../agent2_nlp/wordfreq.json'),
-            this.loadJSON('../agent2_nlp/sentiment.json'),
-            this.loadJSON('../agent2_nlp/danmaku_time_distribution.json'),
-            this.loadJSON('../agent2_nlp/user_behavior.json'),
+            this.loadJSON('../nlp_processing/wordfreq.json'),
+            this.loadJSON('../nlp_processing/sentiment.json'),
+            this.loadJSON('../nlp_processing/danmaku_time_distribution.json'),
+            this.loadJSON('../nlp_processing/user_behavior.json'),
         ]);
         return { wordfreq, sentiment, timeDist, userBehavior };
     }
@@ -761,7 +761,7 @@ class ChartManager {
 ### 6.1 运行NLP脚本
 
 ```bash
-cd agent2_nlp
+cd nlp_processing
 
 # 基础NLP流程
 python nlp_process.py              # 词频统计 + LDA
@@ -785,7 +785,7 @@ python word_cooccurrence.py          # 共现网络
 
 ```bash
 # 启动HTTP服务器
-cd agent4_frontend
+cd web_frontend
 python -m http.server 8080
 
 # 访问页面

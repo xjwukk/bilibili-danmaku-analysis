@@ -3,7 +3,7 @@
 import json
 import os
 
-NLP_DIR = 'F:/Claude project/大数据应用系统开发实践/agent2_nlp'
+NLP_DIR = 'F:/Claude project/大数据应用系统开发实践/nlp_processing'
 
 print('Loading word frequency data...')
 with open(os.path.join(NLP_DIR, 'wordfreq.json'), 'r', encoding='utf-8') as f:

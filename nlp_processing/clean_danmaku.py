@@ -15,7 +15,7 @@ from collections import Counter
 def load_stopwords():
     """从cn_stopwords.txt加载停用词"""
     base_dir = 'F:/Claude project/大数据应用系统开发实践'
-    nlp_dir = os.path.join(base_dir, 'agent2_nlp')
+    nlp_dir = os.path.join(base_dir, 'nlp_processing')
     stopwords_file = os.path.join(nlp_dir, 'cn_stopwords.txt')
     stopwords = set()
     if os.path.exists(stopwords_file):
@@ -195,8 +195,8 @@ def main():
     """主函数"""
     # 路径配置
     base_dir = 'F:/Claude project/大数据应用系统开发实践'
-    input_path = os.path.join(base_dir, 'agent1_crawler/bilibili_data.json')
-    output_dir = os.path.join(base_dir, 'agent2_nlp')
+    input_path = os.path.join(base_dir, 'bilibili_crawler/bilibili_data.json')
+    output_dir = os.path.join(base_dir, 'nlp_processing')
     output_path = os.path.join(output_dir, 'cleaned_danmaku.json')
 
     # 确保输出目录存在

@@ -50,17 +50,17 @@ class DataService {
             keywordsData,
             cooccurrenceData
         ] = await Promise.all([
-            this.loadJSON('../agent1_crawler/bilibili_data.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/wordfreq.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/sentiment.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/sentiment_distribution.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/lda_sentiment_topics.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/danmaku_time_distribution.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/user_behavior.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/sentiment_trend.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/danmaku_classified.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/keywords.json').catch(() => null),
-            this.loadJSON('../agent2_nlp/word_cooccurrence.json').catch(() => null)
+            this.loadJSON('../bilibili_crawler/bilibili_data.json').catch(() => null),
+            this.loadJSON('../nlp_processing/wordfreq.json').catch(() => null),
+            this.loadJSON('../nlp_processing/sentiment.json').catch(() => null),
+            this.loadJSON('../nlp_processing/sentiment_distribution.json').catch(() => null),
+            this.loadJSON('../nlp_processing/lda_sentiment_topics.json').catch(() => null),
+            this.loadJSON('../nlp_processing/danmaku_time_distribution.json').catch(() => null),
+            this.loadJSON('../nlp_processing/user_behavior.json').catch(() => null),
+            this.loadJSON('../nlp_processing/sentiment_trend.json').catch(() => null),
+            this.loadJSON('../nlp_processing/danmaku_classified.json').catch(() => null),
+            this.loadJSON('../nlp_processing/keywords.json').catch(() => null),
+            this.loadJSON('../nlp_processing/word_cooccurrence.json').catch(() => null)
         ]);
 
         // 处理视频信息

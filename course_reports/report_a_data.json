@@ -198,7 +198,7 @@
     {"type": "h1", "text": "第四章 运行及测试"},
     {"type": "h2", "text": "4.1 编译运行"},
     {"type": "h3", "text": "4.1.1 环境配置"},
-    {"type": "code", "lang": "bash", "text": "# Python版本要求\nPython 3.7+\n\n# 依赖库\npip install requests happybase jieba\n\n# 代码文件\nagent1_crawler/bilibili_crawler.py\nagent1_crawler/clean_danmaku.py\nagent3_storage/hbase_writer.py"},
+    {"type": "code", "lang": "bash", "text": "# Python版本要求\nPython 3.7+\n\n# 依赖库\npip install requests happybase jieba\n\n# 代码文件\nbilibili_crawler/bilibili_crawler.py\nbilibili_crawler/clean_danmaku.py\nhbase_storage/hbase_writer.py"},
 
     {"type": "h3", "text": "4.1.2 Cookie配置"},
     {"type": "p", "text": "在 bilibili_crawler.py 中配置有效的B站Cookie："},
@@ -209,7 +209,7 @@
     {"type": "code", "lang": "bash", "text": "# 启动Hadoop与HBase\nstart-dfs.sh\nstart-hbase.sh\n\n# 进入HBase Shell\nhbase shell\n\n# 创建命名空间与表\ncreate_namespace 'bilibili'\ncreate 'video_info',     'info', 'stats'\ncreate 'danmaku_data',    'content', 'meta'\ncreate 'wordfreq_data',   'stats'"},
 
     {"type": "h3", "text": "4.1.4 运行命令"},
-    {"type": "code", "lang": "bash", "text": "# 1. 爬虫采集\ncd agent1_crawler\npython bilibili_crawler.py        # -> bilibili_data.json\npython clean_danmaku.py           # -> cleaned_danmaku.json\n\n# 2. 写入HBase\ncd ../agent3_storage\npython hbase_writer.py            # 写入三张表"},
+    {"type": "code", "lang": "bash", "text": "# 1. 爬虫采集\ncd bilibili_crawler\npython bilibili_crawler.py        # -> bilibili_data.json\npython clean_danmaku.py           # -> cleaned_danmaku.json\n\n# 2. 写入HBase\ncd ../hbase_storage\npython hbase_writer.py            # 写入三张表"},
 
     {"type": "h2", "text": "4.2 测试结果"},
     {"type": "h3", "text": "4.2.1 爬虫运行日志"},

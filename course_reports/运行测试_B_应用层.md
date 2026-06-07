@@ -1,6 +1,6 @@
 # 应用层模块 — 运行与测试文档
 
-> **学生B（应用层）**：负责 `agent2_nlp`（NLP 处理：分词/情感/LDA/关键词/NER 等）与 `agent4_frontend`（ECharts 前端可视化）两大模块的运行与测试。
+> **学生B（应用层）**：负责 `nlp_processing`（NLP 处理：分词/情感/LDA/关键词/NER 等）与 `web_frontend`（ECharts 前端可视化）两大模块的运行与测试。
 >
 > 本文档为**实操 runbook**，逐步指导如何在本地完成 NLP 处理流水线与前端可视化页面的端到端验证。
 
@@ -47,20 +47,20 @@ pip install jieba pkuseg snownlp gensim wordcloud cnsenti scikit-learn numpy pan
 
 > **注意**：
 > - `pkuseg` 首次使用会下载约 200 MB 模型，若网络受限可跳过（脚本有 jieba 降级）
-> - `snowlp` 训练数据 `online_shopping_10_cats.csv` 已包含在 `agent2_nlp/`，无需额外下载
+> - `snowlp` 训练数据 `online_shopping_10_cats.csv` 已包含在 `nlp_processing/`，无需额外下载
 > - `sentiment_model.marshal.3` 是训练好的 SnowNLP 模型，可直接使用
 
 ### 1.4 前置：学生A 清洗后的数据
 
-应用层所有模块的输入是 `agent2_nlp/cleaned_danmaku.json`，由学生A产出。若该文件不存在：
+应用层所有模块的输入是 `nlp_processing/cleaned_danmaku.json`，由学生A产出。若该文件不存在：
 
 ```bash
 # 1. 跑学生A的爬虫
-cd "F:\Claude Project\大数据应用系统开发实践\agent1_crawler"
+cd "F:\Claude Project\大数据应用系统开发实践\bilibili_crawler"
 python bilibili_crawler_v3.py
 
 # 2. 跑学生A的清洗
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python clean_danmaku.py
 ```
 
@@ -82,26 +82,26 @@ npx http-server -p 8080
 
 | 文件 | 作用 | 输入 | 输出 |
 |------|------|------|------|
-| `agent2_nlp/segmentation.py` | pkuseg / jieba 分词 + 词性 | cleaned_danmaku.json | 分词结果 |
-| `agent2_nlp/nlp_process.py` | 词频统计 + 词云数据 + 基础 LDA | cleaned_danmaku.json | wordfreq.json, lda_topics.json |
-| `agent2_nlp/generate_wordcloud_v2.py` | 生成 ECharts 词云 JSON | wordfreq.json | 词云前端数据 |
-| `agent2_nlp/sentiment_lexicon.py` | SnowNLP 情感打分 | cleaned_danmaku.json | sentiment.json |
-| `agent2_nlp/sentiment_enhanced.py` | 增强版情感（规则+否定+表情） | cleaned_danmaku.json | 增强情感结果 |
-| `agent2_nlp/ner_recognition.py` | 命名实体识别（人名/地名/机构/技术词） | cleaned_danmaku.json | ner_entities.json |
-| `agent2_nlp/keyword_extraction.py` | TF-IDF + TextRank 关键词 | cleaned_danmaku.json | keywords.json |
-| `agent2_nlp/lda_sentiment_topics.py` | 情感分离 LDA（积极/消极分别建模） | cleaned_danmaku.json | lda_sentiment_topics.json |
-| `agent2_nlp/sentiment_trend.py` | 情感趋势（时间序列） | cleaned_danmaku.json + sentiment.json | sentiment_trend.json |
-| `agent2_nlp/danmaku_classifier.py` | 弹幕类型分类（祝福/玩梗/刷屏/提问） | cleaned_danmaku.json | danmaku_classified.json |
-| `agent2_nlp/danmaku_time_distribution.py` | 弹幕时间分布 | cleaned_danmaku.json | danmaku_time_distribution.json |
-| `agent2_nlp/user_behavior_analysis.py` | 用户行为分析 | cleaned_danmaku.json | user_behavior.json |
-| `agent2_nlp/word_cooccurrence.py` | 词语共现网络 | cleaned_danmaku.json | word_cooccurrence.json |
-| `agent2_nlp/sentiment_distribution.py` | 情感分布可视化（生成 PNG） | sentiment.json | sentiment_distribution.png |
-| `agent4_frontend/index.html` | 词云展示页 + 时间轴 | wordfreq.json + time_dist.json | 浏览器页面 |
-| `agent4_frontend/charts.html` | 统计图表页（情感/趋势/类型/用户） | 多个 json | 浏览器页面 |
-| `agent4_frontend/js/data.js` | DataService 统一数据加载 | - | - |
-| `agent4_frontend/js/wordcloud.js` | ECharts 词云组件 | - | - |
-| `agent4_frontend/js/charts.js` | 统计图表组件 | - | - |
-| `agent4_frontend/js/timeline.js` | 时间轴组件 | - | - |
+| `nlp_processing/segmentation.py` | pkuseg / jieba 分词 + 词性 | cleaned_danmaku.json | 分词结果 |
+| `nlp_processing/nlp_process.py` | 词频统计 + 词云数据 + 基础 LDA | cleaned_danmaku.json | wordfreq.json, lda_topics.json |
+| `nlp_processing/generate_wordcloud_v2.py` | 生成 ECharts 词云 JSON | wordfreq.json | 词云前端数据 |
+| `nlp_processing/sentiment_lexicon.py` | SnowNLP 情感打分 | cleaned_danmaku.json | sentiment.json |
+| `nlp_processing/sentiment_enhanced.py` | 增强版情感（规则+否定+表情） | cleaned_danmaku.json | 增强情感结果 |
+| `nlp_processing/ner_recognition.py` | 命名实体识别（人名/地名/机构/技术词） | cleaned_danmaku.json | ner_entities.json |
+| `nlp_processing/keyword_extraction.py` | TF-IDF + TextRank 关键词 | cleaned_danmaku.json | keywords.json |
+| `nlp_processing/lda_sentiment_topics.py` | 情感分离 LDA（积极/消极分别建模） | cleaned_danmaku.json | lda_sentiment_topics.json |
+| `nlp_processing/sentiment_trend.py` | 情感趋势（时间序列） | cleaned_danmaku.json + sentiment.json | sentiment_trend.json |
+| `nlp_processing/danmaku_classifier.py` | 弹幕类型分类（祝福/玩梗/刷屏/提问） | cleaned_danmaku.json | danmaku_classified.json |
+| `nlp_processing/danmaku_time_distribution.py` | 弹幕时间分布 | cleaned_danmaku.json | danmaku_time_distribution.json |
+| `nlp_processing/user_behavior_analysis.py` | 用户行为分析 | cleaned_danmaku.json | user_behavior.json |
+| `nlp_processing/word_cooccurrence.py` | 词语共现网络 | cleaned_danmaku.json | word_cooccurrence.json |
+| `nlp_processing/sentiment_distribution.py` | 情感分布可视化（生成 PNG） | sentiment.json | sentiment_distribution.png |
+| `web_frontend/index.html` | 词云展示页 + 时间轴 | wordfreq.json + time_dist.json | 浏览器页面 |
+| `web_frontend/charts.html` | 统计图表页（情感/趋势/类型/用户） | 多个 json | 浏览器页面 |
+| `web_frontend/js/data.js` | DataService 统一数据加载 | - | - |
+| `web_frontend/js/wordcloud.js` | ECharts 词云组件 | - | - |
+| `web_frontend/js/charts.js` | 统计图表组件 | - | - |
+| `web_frontend/js/timeline.js` | 时间轴组件 | - | - |
 
 ---
 
@@ -110,7 +110,7 @@ npx http-server -p 8080
 ### 3.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python segmentation.py
 ```
 
@@ -141,7 +141,7 @@ Top 20 高频词:
 
 ### 3.3 产物
 
-- **生成**：`agent2_nlp/wordfreq_pkuseg.json`（pkuseg 版词频，可与 jieba 版对比）
+- **生成**：`nlp_processing/wordfreq_pkuseg.json`（pkuseg 版词频，可与 jieba 版对比）
 
 ### 3.4 测试用例
 
@@ -157,7 +157,7 @@ Top 20 高频词:
 ```bash
 python -c "
 import json
-d = json.load(open('agent2_nlp/wordfreq_pkuseg.json', encoding='utf-8'))
+d = json.load(open('nlp_processing/wordfreq_pkuseg.json', encoding='utf-8'))
 print('Top 5:', [w['word'] for w in d['top_100'][:5]])
 print('Total:', d['total_words'], 'Unique:', d['unique_words'])
 "
@@ -170,7 +170,7 @@ print('Total:', d['total_words'], 'Unique:', d['unique_words'])
 ### 4.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 
 # 1. 基础词频 + LDA
 python nlp_process.py
@@ -209,7 +209,7 @@ NLP 处理模块
 Loading word frequency data...
 Top words: 100
 Generating wordcloud data...
-Saved: agent4_frontend/data/wordcloud.json
+Saved: web_frontend/data/wordcloud.json
 ✓ 完成
 ```
 
@@ -217,9 +217,9 @@ Saved: agent4_frontend/data/wordcloud.json
 
 | 文件 | 内容 |
 |------|------|
-| `agent2_nlp/wordfreq.json` | Top 100 词频 |
-| `agent2_nlp/lda_topics.json` | 8 主题及关键词 |
-| `agent4_frontend/data/wordcloud.json` | ECharts 词云数据 |
+| `nlp_processing/wordfreq.json` | Top 100 词频 |
+| `nlp_processing/lda_topics.json` | 8 主题及关键词 |
+| `web_frontend/data/wordcloud.json` | ECharts 词云数据 |
 
 ### 4.5 测试用例
 
@@ -238,7 +238,7 @@ Saved: agent4_frontend/data/wordcloud.json
 ### 5.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python sentiment_lexicon.py
 ```
 
@@ -268,9 +268,9 @@ python sentiment_lexicon.py
 
 | 文件 | 内容 |
 |------|------|
-| `agent2_nlp/sentiment.json` | 整体统计 + 每条弹幕得分 |
-| `agent2_nlp/positive_danmakus.json` | 正面弹幕列表 |
-| `agent2_nlp/negative_danmakus.json` | 负面弹幕列表 |
+| `nlp_processing/sentiment.json` | 整体统计 + 每条弹幕得分 |
+| `nlp_processing/positive_danmakus.json` | 正面弹幕列表 |
+| `nlp_processing/negative_danmakus.json` | 负面弹幕列表 |
 
 ### 5.4 测试用例
 
@@ -286,7 +286,7 @@ python sentiment_lexicon.py
 ```bash
 python -c "
 import json
-d = json.load(open('agent2_nlp/sentiment.json', encoding='utf-8'))
+d = json.load(open('nlp_processing/sentiment.json', encoding='utf-8'))
 s = d['stats']
 print(f\"Total: {s['total']}, +: {s['positive']['count']}, -: {s['negative']['count']}, =: {s['neutral']['count']}\")
 "
@@ -299,7 +299,7 @@ print(f\"Total: {s['total']}, +: {s['positive']['count']}, -: {s['negative']['co
 ### 6.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python sentiment_enhanced.py
 ```
 
@@ -358,7 +358,7 @@ print("✓ 增强情感分析单元测试通过")
 ### 7.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python ner_recognition.py
 ```
 
@@ -402,7 +402,7 @@ Top 10 实体:
 ### 8.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python keyword_extraction.py
 ```
 
@@ -449,7 +449,7 @@ LDA 已集成在 `nlp_process.py`，参考 [§4.1](#41-一键运行)。
 若需单独运行：
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python -c "
 from nlp_process import lda_topic_modeling
 import json
@@ -485,7 +485,7 @@ coherence=0.6135
 ### 10.1 一键运行
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python lda_sentiment_topics.py
 ```
 
@@ -528,7 +528,7 @@ python lda_sentiment_topics.py
 ### 11.1 完整流水线
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent2_nlp"
+cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 
 python sentiment_trend.py              # 情感趋势
 python danmaku_classifier.py           # 弹幕类型
@@ -619,7 +619,7 @@ python sentiment_distribution.py       # 情感分布 PNG
 ### 12.1 启动前端
 
 ```bash
-cd "F:\Claude Project\大数据应用系统开发实践\agent4_frontend"
+cd "F:\Claude Project\大数据应用系统开发实践\web_frontend"
 python -m http.server 8080
 ```
 
@@ -661,7 +661,7 @@ F12 → Console 标签若有错误：
 | 错误 | 原因 | 解决 |
 |------|------|------|
 | `CORS policy` | 用 `file://` 打开 | 用 `http://` 访问 |
-| `404 wordfreq.json` | 路径错误 | 确认 `agent2_nlp/wordfreq.json` 存在 |
+| `404 wordfreq.json` | 路径错误 | 确认 `nlp_processing/wordfreq.json` 存在 |
 | `echarts is not defined` | ECharts CDN 失败 | 检查网络或换 CDN |
 
 ---
@@ -670,7 +670,7 @@ F12 → Console 标签若有错误：
 
 ### 13.1 完整流水线脚本
 
-将以下命令保存为 `agent5_report/run_e2e_B.sh`：
+将以下命令保存为 `course_reports/run_e2e_B.sh`：
 
 ```bash
 #!/bin/bash
@@ -678,7 +678,7 @@ set -e
 ROOT="F:\Claude Project\大数据应用系统开发实践"
 
 echo "==== 1. 词频统计 + LDA ===="
-cd "$ROOT/agent2_nlp"
+cd "$ROOT/nlp_processing"
 python nlp_process.py
 python generate_wordcloud_v2.py
 
@@ -701,7 +701,7 @@ python user_behavior_analysis.py
 python word_cooccurrence.py
 
 echo "==== 5. 启动前端 ===="
-cd "$ROOT/agent4_frontend"
+cd "$ROOT/web_frontend"
 python -m http.server 8080 &
 SERVER_PID=$!
 sleep 2
@@ -714,7 +714,7 @@ wait $SERVER_PID
 
 ```bash
 cd "F:\Claude Project\大数据应用系统开发实践"
-bash agent5_report/run_e2e_B.sh
+bash course_reports/run_e2e_B.sh
 ```
 
 ### 13.3 联调通过标准
@@ -741,7 +741,7 @@ bash agent5_report/run_e2e_B.sh
 ### Q2. `SnowNLP` 训练数据找不到
 
 - **原因**：`online_shopping_10_cats.csv` 路径错误
-- **解决**：确认该文件在 `agent2_nlp/` 下；或在脚本中修改 `BASE_DIR`
+- **解决**：确认该文件在 `nlp_processing/` 下；或在脚本中修改 `BASE_DIR`
 
 ### Q3. `gensim` 报 `ImportError: smart_open`
 
@@ -781,21 +781,21 @@ bash agent5_report/run_e2e_B.sh
 
 | 文件 | 路径 |
 |------|------|
-| 分词模块 | [agent2_nlp/segmentation.py](../agent2_nlp/segmentation.py) |
-| 词频 + LDA | [agent2_nlp/nlp_process.py](../agent2_nlp/nlp_process.py) |
-| 词云生成 | [agent2_nlp/generate_wordcloud_v2.py](../agent2_nlp/generate_wordcloud_v2.py) |
-| 情感分析（基础） | [agent2_nlp/sentiment_lexicon.py](../agent2_nlp/sentiment_lexicon.py) |
-| 情感分析（增强） | [agent2_nlp/sentiment_enhanced.py](../agent2_nlp/sentiment_enhanced.py) |
-| NER 识别 | [agent2_nlp/ner_recognition.py](../agent2_nlp/ner_recognition.py) |
-| 关键词抽取 | [agent2_nlp/keyword_extraction.py](../agent2_nlp/keyword_extraction.py) |
-| 情感分离 LDA | [agent2_nlp/lda_sentiment_topics.py](../agent2_nlp/lda_sentiment_topics.py) |
-| 情感趋势 | [agent2_nlp/sentiment_trend.py](../agent2_nlp/sentiment_trend.py) |
-| 弹幕类型 | [agent2_nlp/danmaku_classifier.py](../agent2_nlp/danmaku_classifier.py) |
-| 时间分布 | [agent2_nlp/danmaku_time_distribution.py](../agent2_nlp/danmaku_time_distribution.py) |
-| 用户行为 | [agent2_nlp/user_behavior_analysis.py](../agent2_nlp/user_behavior_analysis.py) |
-| 共现网络 | [agent2_nlp/word_cooccurrence.py](../agent2_nlp/word_cooccurrence.py) |
-| 情感分布图 | [agent2_nlp/sentiment_distribution.py](../agent2_nlp/sentiment_distribution.py) |
-| 词云展示页 | [agent4_frontend/index.html](../agent4_frontend/index.html) |
-| 统计图表页 | [agent4_frontend/charts.html](../agent4_frontend/charts.html) |
-| DataService | [agent4_frontend/js/data.js](../agent4_frontend/js/data.js) |
+| 分词模块 | [nlp_processing/segmentation.py](../nlp_processing/segmentation.py) |
+| 词频 + LDA | [nlp_processing/nlp_process.py](../nlp_processing/nlp_process.py) |
+| 词云生成 | [nlp_processing/generate_wordcloud_v2.py](../nlp_processing/generate_wordcloud_v2.py) |
+| 情感分析（基础） | [nlp_processing/sentiment_lexicon.py](../nlp_processing/sentiment_lexicon.py) |
+| 情感分析（增强） | [nlp_processing/sentiment_enhanced.py](../nlp_processing/sentiment_enhanced.py) |
+| NER 识别 | [nlp_processing/ner_recognition.py](../nlp_processing/ner_recognition.py) |
+| 关键词抽取 | [nlp_processing/keyword_extraction.py](../nlp_processing/keyword_extraction.py) |
+| 情感分离 LDA | [nlp_processing/lda_sentiment_topics.py](../nlp_processing/lda_sentiment_topics.py) |
+| 情感趋势 | [nlp_processing/sentiment_trend.py](../nlp_processing/sentiment_trend.py) |
+| 弹幕类型 | [nlp_processing/danmaku_classifier.py](../nlp_processing/danmaku_classifier.py) |
+| 时间分布 | [nlp_processing/danmaku_time_distribution.py](../nlp_processing/danmaku_time_distribution.py) |
+| 用户行为 | [nlp_processing/user_behavior_analysis.py](../nlp_processing/user_behavior_analysis.py) |
+| 共现网络 | [nlp_processing/word_cooccurrence.py](../nlp_processing/word_cooccurrence.py) |
+| 情感分布图 | [nlp_processing/sentiment_distribution.py](../nlp_processing/sentiment_distribution.py) |
+| 词云展示页 | [web_frontend/index.html](../web_frontend/index.html) |
+| 统计图表页 | [web_frontend/charts.html](../web_frontend/charts.html) |
+| DataService | [web_frontend/js/data.js](../web_frontend/js/data.js) |
 | 课程设计报告 | [报告B_应用层.md](报告B_应用层.md) |
