@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-分词模块升级版
-使用pkuseg替代jieba，提供更精确的中文分词
+分词模块
+基于 pkuseg 实现中文分词
 
-pkuseg 是北京大学开发的基于条件随机场(CRF)的中文分词工具
-在多个公开数据集上分词准确率高于jieba
+pkuseg 是北京大学开发的基于条件随机场(CRF)的中文分词工具，
+在多个公开数据集上具有较高的分词准确率，并支持词性标注。
 """
 
 import json
@@ -226,7 +226,7 @@ def pos_distribution_analysis(words_with_pos):
 # ============================================================
 def main():
     print('=' * 70)
-    print('分词模块 (pkuseg 升级版)')
+    print('分词模块 (pkuseg)')
     print('=' * 70)
 
     # 加载数据

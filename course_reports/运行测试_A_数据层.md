@@ -72,7 +72,7 @@ create 'wordfreq_data',   'stats'
 1. 登录 [B 站](https://www.bilibili.com)
 2. F12 → Network → 找到 `www.bilibili.com` 请求
 3. 复制请求头中的完整 Cookie 字段
-4. 粘贴到 [bilibili_crawler/bilibili_crawler_v3.py:23](bilibili_crawler/bilibili_crawler_v3.py#L23) 的 `COOKIE` 变量
+4. 粘贴到 [bilibili_crawler/bilibili_crawler.py:23](bilibili_crawler/bilibili_crawler.py#L23) 的 `COOKIE` 变量
 
 ---
 
@@ -80,7 +80,7 @@ create 'wordfreq_data',   'stats'
 
 | 文件 | 作用 | 必跑 |
 |------|------|------|
-| `bilibili_crawler/bilibili_crawler_v3.py` | B 站 API 爬虫（视频信息 + Protobuf 弹幕 + XML 备用） | ✅ |
+| `bilibili_crawler/bilibili_crawler.py` | B 站 API 爬虫（视频信息 + Protobuf 弹幕 + XML 备用） | ✅ |
 | `nlp_processing/clean_danmaku.py` | 弹幕清洗（特殊字符、纯数字/纯符号、繁简转换、去重） | ✅ |
 | `hbase_storage/hbase_writer.py` | 写入 HBase 三张表（视频信息/弹幕/词频） | ⭕ 真实模式 |
 | `hbase_storage/hbase_simulator.py` | 内存模拟 HBase 写入/查询（无需 HBase） | ✅ 起步 |
@@ -89,7 +89,7 @@ create 'wordfreq_data',   'stats'
 | `bilibili_crawler/bilibili_data.json` | 爬虫输出（视频信息 + 原始弹幕） | 产物 |
 | `nlp_processing/cleaned_danmaku.json` | 清洗后弹幕 | 产物 |
 
-> **实操建议**：第一次跑通时只用 `bilibili_crawler_v3.py` + `clean_danmaku.py` + `hbase_simulator.py`，三者即可完成完整数据通道验证，不依赖 HBase。
+> **实操建议**：第一次跑通时只用 `bilibili_crawler.py` + `clean_danmaku.py` + `hbase_simulator.py`，三者即可完成完整数据通道验证，不依赖 HBase。
 
 ---
 
@@ -99,7 +99,7 @@ create 'wordfreq_data',   'stats'
 
 ```bash
 cd "F:\Claude Project\大数据应用系统开发实践\bilibili_crawler"
-python bilibili_crawler_v3.py
+python bilibili_crawler.py
 ```
 
 ### 3.2 预期输出
@@ -108,7 +108,7 @@ python bilibili_crawler_v3.py
 
 ```
 ============================================================
-B站弹幕爬虫 - 重构版
+B站弹幕爬虫
 ============================================================
 [1/4] 获取视频信息...
     标题: 一个视频搞懂OpenClaw！
@@ -457,7 +457,7 @@ ROOT="F:\Claude Project\大数据应用系统开发实践"
 
 echo "==== 1. 爬虫采集 ===="
 cd "$ROOT/bilibili_crawler"
-python bilibili_crawler_v3.py
+python bilibili_crawler.py
 
 echo "==== 2. 数据清洗 ===="
 cd "$ROOT/nlp_processing"
@@ -505,7 +505,7 @@ bash course_reports/run_e2e_A.sh
 - **原因**：未配置 SESSDATA Cookie，B 站 WBI 签名拦截
 - **解决**：参考 [§1.5](#15-b-站-cookie) 配置 Cookie；或接受无 Cookie 模式（仅 XML 备用 1200 条）
 
-### Q2. `bilibili_crawler_v3.py` 报 `JSON decode error`
+### Q2. `bilibili_crawler.py` 报 `JSON decode error`
 
 - **原因**：HTTP 429 被风控
 - **解决**：在脚本中调大 `time.sleep()` 间隔；或更换 IP
@@ -541,7 +541,7 @@ bash course_reports/run_e2e_A.sh
 
 | 文件 | 路径 |
 |------|------|
-| 爬虫主程序 | [bilibili_crawler/bilibili_crawler_v3.py](../bilibili_crawler/bilibili_crawler_v3.py) |
+| 爬虫主程序 | [bilibili_crawler/bilibili_crawler.py](../bilibili_crawler/bilibili_crawler.py) |
 | 清洗模块 | [nlp_processing/clean_danmaku.py](../nlp_processing/clean_danmaku.py) |
 | 停用词表 | [nlp_processing/cn_stopwords.txt](../nlp_processing/cn_stopwords.txt) |
 | HBase 写入 | [hbase_storage/hbase_writer.py](../hbase_storage/hbase_writer.py) |

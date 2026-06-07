@@ -1,5 +1,5 @@
 """
-B站视频弹幕数据爬虫 V3
+B站视频弹幕数据爬虫
 支持登录Cookie获取完整弹幕数据
 """
 
@@ -241,7 +241,7 @@ def get_danmaku_history(cid, pid, date_str):
 
 def main():
     print("=" * 60)
-    print("B站弹幕爬虫 V3 - 支持登录Cookie")
+    print("B站弹幕爬虫 - 支持登录Cookie")
     print("=" * 60)
 
     # 检查Cookie状态

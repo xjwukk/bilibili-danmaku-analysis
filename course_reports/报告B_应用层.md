@@ -15,16 +15,16 @@
 本项目按"数据层/应用层"划分两人分工：
 
 - **学生A（数据层）**：负责**弹幕数据采集、数据清洗、HBase持久化存储**（详见报告A）。
-- **学生B（应用层）**：负责**NLP文本分析、增强分析、ECharts前端可视化**。本报告聚焦于基于3515条清洗后弹幕的语义挖掘与可视化展示。
+- **学生B（应用层）**：负责**NLP文本分析、深度分析、ECharts前端可视化**。本报告聚焦于基于3515条清洗后弹幕的语义挖掘与可视化展示。
 
 ### 1.2 关键技术概述
 
 | 技术 | 说明 |
 |------|------|
-| **jieba / pkuseg** | 中文分词（pkuseg基于CRF精度更高） |
-| **SnowNLP + cnsenti** | 情感打分（电商模型训练集 + HowNet词典增强） |
+| **jieba / pkuseg** | 中文分词（pkuseg基于CRF模型） |
+| **SnowNLP + cnsenti** | 情感打分（电商模型训练集 + HowNet词典） |
 | **TF-IDF / TextRank** | 关键词抽取 |
-| **gensim LDA** | 主题建模，coherence score自动寻优 |
+| **gensim LDA** | 主题建模，结合coherence score选择主题数 |
 | **wordcloud + ECharts** | 词云可视化（静态PNG + 交互词云） |
 | **ECharts** | 折线/柱状/饼图/双Y轴/词云/时间轴等 |
 | **DataService** | 前端异步加载JSON的统一数据层 |
@@ -39,14 +39,14 @@ cleaned_danmaku.json (3515条, 来自学生A)
 │          NLP 核心处理模块              │
 │  - pkuseg分词 / 停用词过滤             │
 │  - 词频统计 / 关键词抽取               │
-│  - 情感分析（SnowNLP + 增强规则）      │
-│  - LDA 主题建模（coherence寻优）       │
+│  - 情感分析（SnowNLP + 规则）          │
+│  - LDA 主题建模（coherence选优）       │
 └──────────────────────────────────────┘
    │  wordfreq.json / sentiment.json /
    │  lda_topics.json / keywords.json
    ▼
 ┌──────────────────────────────────────┐
-│          增强分析模块                  │
+│          深度分析模块                  │
 │  - 情感趋势 / 弹幕类型 / 时间分布       │
 │  - 用户行为 / 词语共现网络             │
 └──────────────────────────────────────┘
@@ -70,7 +70,7 @@ cleaned_danmaku.json (3515条, 来自学生A)
 
 | 库/工具 | 用途 | 选择理由 |
 |---------|------|---------|
-| jieba / pkuseg | 中文分词 | 最成熟的中文分词库；pkuseg为CRF升级版精度更高 |
+| jieba / pkuseg | 中文分词 | 成熟的中文分词库；pkuseg基于CRF算法适合规范文本 |
 | gensim | 主题建模 | 专业主题模型工具，支持LDA与coherence score |
 | wordcloud | 词云生成 | 丰富词云样式支持 |
 | SnowNLP | 情感分析 | 基于电商评论训练的中文情感库 |
@@ -94,7 +94,7 @@ cleaned_danmaku.json (3515条, 来自学生A)
          │
          ▼
 ┌─────────────────────────────────────┐
-│         增强分析模块                  │
+│         深度分析模块                  │
 │   - 情感趋势       - 弹幕类型分类     │
 │   - 时间分布       - 用户行为         │
 │   - 词语共现网络                     │
@@ -150,15 +150,15 @@ cleaned_danmaku.json (3515条, 来自学生A)
 | 词频统计 | 分词列表 | Top 100词频 |
 | 关键词抽取 | 分词列表 | TF-IDF/TextRank综合Top |
 | 情感分析 | 清洗后弹幕 | 正面/负面/中性分布 |
-| LDA建模 | 分词列表 | 8个主题及关键词（coherence优化） |
+| LDA建模 | 分词列表 | 8个主题及关键词（coherence选优） |
 | NER实体识别 | 清洗后弹幕 | 人名/地名/机构名/技术词 |
 | 词云生成 | 词频数据 | PNG图片 + ECharts展示 |
 
 ### 3.2 分词实现
 
-#### 3.2.1 pkuseg分词（升级版）
+#### 3.2.1 pkuseg分词
 
-pkuseg是基于条件随机场(CRF)的中文分词工具，精度高于jieba：
+pkuseg是基于条件随机场(CRF)的中文分词工具，适用于规范文本：
 
 ```python
 # segmentation.py
@@ -173,7 +173,7 @@ class Segmenter:
         return self.pkuseg_seg.cut(text)
 ```
 
-**pkuseg vs jieba 对比**：
+**pkuseg 与 jieba 特性对照**：
 
 | 特性 | jieba | pkuseg |
 |------|-------|---------|
@@ -193,12 +193,14 @@ words = seg.cut_with_pos(text)
 
 ### 3.3 情感分析实现
 
-#### 3.3.1 增强版情感分析器
+#### 3.3.1 情感分析器
+
+情感分析器在 SnowNLP 电商评论模型基础上叠加否定词处理、程度副词权重、表情符号、标点情感、转折句式检测五种规则，以适应弹幕短文本的口语化表达：
 
 ```python
-# sentiment_enhanced.py
-class EnhancedSentimentAnalyzer:
-    """增强版情感分析器"""
+# sentiment_rules.py
+class RuleBasedSentimentAnalyzer:
+    """弹幕情感分析器"""
 
     # 否定词处理
     NEGATION_WORDS = {'不', '没', '无', '别', '非', '否', '莫', '勿', '未'}
@@ -217,29 +219,29 @@ class EnhancedSentimentAnalyzer:
 
     def analyze(self, text):
         # 1. 表情符号分析
-        # 2. 标点符号分析（感叹号增强）
+        # 2. 标点符号分析（感叹号情感放大）
         # 3. 词语情感分析（考虑否定词+程度词）
         # 4. 转折句式检测
         pass
 ```
 
-**增强要点**：
+**规则要点**：
 
-| 特性 | 原有方案 | 增强方案 |
-|------|---------|---------|
-| 否定词处理 | 无 | 完整否定词表 |
-| 程度副词 | 无 | 权重放大/缩小 |
-| 表情符号 | 无 | 正面/负面表情库 |
-| 标点分析 | 无 | 感叹号情感增强 |
-| 转折句式 | 无 | 检测"但是"、"然而" |
+| 规则 | 说明 |
+|------|------|
+| 否定词处理 | 维护完整否定词表，遇否定词时翻转情感极性 |
+| 程度副词 | 通过权重表对情感得分进行放大/缩小 |
+| 表情符号 | 正面/负面表情库直接给出情感分量 |
+| 标点分析 | 多个感叹号叠加放大情感强度 |
+| 转折句式 | 检测"但是"、"然而"，以转折后的小句为主 |
 
-**情感分析结果对比**：
+**情感分析最终分布**：
 
-| 情感类别 | 原有方案 | 增强方案 |
-|----------|----------|----------|
-| 正面 | 42.30% | 42.12% |
-| 负面 | 39.94% | 32.47% |
-| 中性 | 17.75% | 25.41% |
+| 情感类别 | 占比 |
+|----------|------|
+| 正面 | 42.12% |
+| 负面 | 32.47% |
+| 中性 | 25.41% |
 
 ### 3.4 NER实体识别实现
 
@@ -305,7 +307,7 @@ def textrank_keyword_extraction(documents):
 | 3 | 模型 | 0.0187 | 0.956 | 0.698 |
 | 4 | token | 0.0176 | 0.912 | 0.671 |
 
-### 3.6 LDA主题建模实现（优化版）
+### 3.6 LDA主题建模实现
 
 ```python
 from gensim import corpora
@@ -319,7 +321,7 @@ def filter_content_words(text):
     return [w.word for w in words if w.flag in ('n', 'v', 'a', 'an', 'vn')]
 
 def find_optimal_topics(texts, dictionary, corpus):
-    """基于coherence score寻找最优主题数"""
+    """基于coherence score寻找合适的主题数"""
     coherence_scores = []
     for num_topics in range(3, 9):
         lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=num_topics)
@@ -328,7 +330,7 @@ def find_optimal_topics(texts, dictionary, corpus):
     return max(coherence_scores, key=lambda x: x[1])
 
 def lda_topic_modeling(danmaku_list, num_topics=5):
-    """LDA主题建模（优化版）"""
+    """LDA主题建模"""
     # 1. Bigram检测
     sentences = [jieba.cut(dm['content']) for dm in danmaku_list]
     phrases = Phrases(sentences)
@@ -372,14 +374,14 @@ def lda_topic_modeling(danmaku_list, num_topics=5):
 - 积极弹幕主要关注AI技术的能力、产品体验和学习价值
 - 消极弹幕更多表达对商业模式、安全风险和实际使用问题的担忧
 
-**LDA优化要点**：
-1. **Coherence Score优化**：自动寻找最优主题数（8个），coherence=0.6135
-2. **Bigram短语检测**：检测到151个有效二元短语（如"豆包_手机"）
-3. **POS词性过滤**：只保留名词、动词、形容词，提升主题质量
+**LDA建模要点**：
+1. **Coherence Score 选优**：在3-8主题数范围内自动选择，结果为8个主题，coherence=0.6135
+2. **Bigram 短语检测**：检测到151个有效二元短语（如"豆包_手机"）
+3. **POS 词性过滤**：只保留名词、动词、形容词，让主题词更聚焦
 
 ---
 
-## 第四章 增强分析模块
+## 第四章 深度分析模块
 
 ### 4.1 情感趋势分析
 
@@ -735,7 +737,7 @@ class ChartManager {
 }
 ```
 
-### 5.6 新增前端功能
+### 5.6 前端功能清单
 
 | 功能 | 描述 | 数据来源 |
 |------|------|---------|
@@ -746,7 +748,7 @@ class ChartManager {
 | 弹幕类型饼图 | 8种类型占比 | `danmaku_classified.json` |
 | 用户行为卡片 | 独立用户/活跃用户统计 | `user_behavior.json` |
 
-新增CSS样式：
+主要CSS样式：
 
 - `.danmaku-detail-panel` - 弹幕详情弹窗
 - `.timeline-container` - 时间轴容器
@@ -767,9 +769,9 @@ cd nlp_processing
 python nlp_process.py              # 词频统计 + LDA
 python sentiment_lexicon.py        # 情感分析
 
-# 增强NLP模块
+# NLP 扩展模块
 python segmentation.py             # pkuseg分词
-python sentiment_enhanced.py       # 增强情感分析
+python sentiment_rules.py       # 弹幕情感分析
 python ner_recognition.py          # NER实体识别
 
 # 高级分析模块
@@ -805,7 +807,7 @@ pkuseg 分词测试
     ['一', '个', '视频', '搞懂', 'OpenClaw', '人工智能']
 ```
 
-#### 6.3.2 情感分析增强测试
+#### 6.3.2 情感分析测试
 
 ```
 测试文本: "这个视频太棒了，学到很多！"
@@ -837,7 +839,7 @@ pkuseg 分词测试
 | pkuseg分词 | CRF分词 | 正确分词 | ✅ |
 | 停用词过滤 | 过滤常见无义词 | 过滤后保留有效词 | ✅ |
 | 词频统计 | 输出Top 100词频 | AI(142)排第一 | ✅ |
-| 增强情感分析 | 否定/程度/表情处理 | 正确识别 | ✅ |
+| 情感分析（多规则） | 否定/程度/表情处理 | 正确识别 | ✅ |
 | NER实体识别 | 识别人名/地名/机构 | 正确识别 | ✅ |
 | 关键词抽取 | TF-IDF+TextRank | 综合得分排序 | ✅ |
 | 情感趋势分析 | 时间序列聚合 | 趋势图数据 | ✅ |
@@ -850,7 +852,7 @@ pkuseg 分词测试
 | 词云点击交互 | 显示相关弹幕 | 详情弹窗 | ✅ |
 | 时间轴组件 | 弹幕密度柱状图 | 正常显示 | ✅ |
 | 词频柱状图 | Top20柱状图 | 正常显示 | ✅ |
-| 情感饼图 | 正面/负面/中性分布 | 45.32%/36.07%/18.61% | ✅ |
+| 情感饼图 | 正面/负面/中性分布 | 42.12%/32.47%/25.41% | ✅ |
 | 情感趋势图 | 时间序列情感变化 | 正常显示 | ✅ |
 | 类型分布图 | 弹幕类型饼图 | 正常显示 | ✅ |
 | 用户行为统计 | 活跃用户卡片 | 正常显示 | ✅ |
@@ -869,7 +871,7 @@ pkuseg 分词测试
 | Bigram短语 | 151个 |
 | Coherence Score | 0.6344 |
 
-#### 6.4.2 情感分布（增强版）
+#### 6.4.2 情感分布
 
 | 情感 | 数量 | 占比 |
 |------|------|------|
@@ -913,7 +915,7 @@ pkuseg 分词测试
 | `wordfreq.json` | 词频统计Top 100 |
 | `wordfreq_pkuseg.json` | pkuseg分词词频统计 |
 | `sentiment.json` | 情感分析结果 |
-| `sentiment_enhanced.json` | 增强情感分析结果 |
+| `sentiment_rules.json` | 多规则情感分析结果 |
 | `lda_topics.json` | LDA主题模型结果 |
 | `lda_sentiment_topics.json` | 情感分离LDA主题 |
 | `ner_entities.json` | NER实体识别结果 |
@@ -933,14 +935,14 @@ pkuseg 分词测试
 ### NLP核心模块
 
 1. **词频分析**：统计11623个词，提取Top 100高频词，AI/权限/token为最热词
-2. **情感分析（增强版）**：SnowNLP电商模型 + 否定词/程度词/表情/标点/转折句式增强
-3. **LDA主题（优化版）**：基于coherence score自动选择8个主题（coherence=0.6135）
-4. **pkuseg分词**：CRF条件随机场分词，精度高于jieba
+2. **情感分析**：SnowNLP电商模型 + 否定词/程度词/表情/标点/转折句式五种规则
+3. **LDA主题建模**：基于coherence score自动选择8个主题（coherence=0.6135）
+4. **pkuseg分词**：CRF条件随机场分词，适用于规范文本
 5. **NER实体识别**：识别人名/地名/机构名/技术词
 6. **关键词抽取**：TF-IDF+TextRank融合算法
 7. **词云生成**：ECharts交互式词云展示
 
-### 增强分析模块
+### 深度分析模块
 
 8. **情感趋势分析**：时间序列情感变化
 9. **弹幕类型分类**：祝福/玩梗/刷屏/提问等8类

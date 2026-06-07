@@ -15,13 +15,11 @@
 ```
 .
 ├── CLAUDE.md                          # Claude Code 项目指导文件
-├── 项目优化文档.md                      # 项目优化计划文档
 ├── 参考.md                            # 参考资料
 │
 ├── bilibili_crawler/                    # 数据采集模块
 │   ├── README.md                      # 爬虫说明文档
-│   ├── bilibili_crawler.py            # 爬虫主程序（早期版本）
-│   ├── bilibili_crawler_v3.py         # 爬虫主程序（最新版本）
+│   ├── bilibili_crawler.py            # 爬虫主程序
 │   ├── bilibili_data.json             # 爬取的原始数据
 │   └── requirements.txt               # Python依赖
 │
@@ -29,19 +27,19 @@
 │   ├── clean_danmaku.py               # 数据清洗
 │   ├── segmentation.py                 # 中文分词（pkuseg/jieba）
 │   ├── nlp_process.py                 # NLP综合处理流水线
-│   ├── sentiment_lexicon.py            # 情感分析
-│   ├── sentiment_enhanced.py          # 增强情感分析
+│   ├── sentiment_lexicon.py            # 情感分析（SnowNLP + 词典）
+│   ├── sentiment_rules.py             # 情感分析（规则 + 词典）
 │   ├── lda_sentiment_topics.py        # LDA主题建模
 │   ├── ner_recognition.py             # 命名实体识别
 │   ├── keyword_extraction.py          # 关键词抽取
-│   ├── generate_wordcloud_v2.py      # 词云生成
+│   ├── generate_wordcloud.py          # 词云生成
 │   ├── cn_stopwords.txt               # 中文停用词表
 │   ├── sentiment_model.marshal.3      # 训练后的SnowNLP模型
 │   ├── online_shopping_10_cats.csv   # 电商评论训练数据
 │   ├── cleaned_danmaku.json           # 清洗后弹幕数据
 │   ├── wordfreq.json                  # 词频统计结果
 │   ├── sentiment.json                 # 情感分析结果
-│   ├── sentiment_enhanced.json        # 增强情感分析结果
+│   ├── sentiment_rules.json           # 规则情感分析结果
 │   ├── lda_topics.json                # LDA主题结果
 │   ├── lda_sentiment_topics.json      # 情感分离LDA主题
 │   ├── keywords.json                  # 关键词抽取结果
@@ -95,7 +93,7 @@
 ```bash
 cd bilibili_crawler
 # 配置Cookie后运行
-python bilibili_crawler_v3.py
+python bilibili_crawler.py
 ```
 
 ### 2. NLP处理
@@ -106,10 +104,10 @@ cd nlp_processing
 # 基础NLP流程
 python clean_danmaku.py           # 清洗弹幕
 python nlp_process.py            # 分词+词频+情感+LDA
-python generate_wordcloud_v2.py  # 生成词云
+python generate_wordcloud.py     # 生成词云
 
-# 增强分析
-python sentiment_enhanced.py     # 增强情感分析
+# 扩展分析
+python sentiment_rules.py        # 规则情感分析
 python ner_recognition.py       # NER实体识别
 python keyword_extraction.py     # 关键词抽取
 ```
@@ -146,7 +144,7 @@ B站视频
                          ┌───────────┴───────────┐
                          ▼                       ▼
                   ┌─────────────┐          ┌──────────────┐
-                  │  词云生成   │          │  增强分析    │
+                  │  词云生成   │          │  深度分析    │
                   │ (ECharts)  │          │ 时间分布/用户 │
                   └─────────────┘          │ 行为/类型分类│
                                            └──────────────┘

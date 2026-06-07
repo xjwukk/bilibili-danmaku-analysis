@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-情感分析增强模块
-基于规则+词典+否定处理的增强版情感分析
+情感分析（规则 + 词典）模块
+基于词典匹配并叠加规则进行情感判定
 
-改进点：
+规则要点：
 1. 否定词处理（不、没有、未...）
 2. 程度副词处理（非常、很、太、有点...）
 3. 表情符号识别
@@ -22,7 +22,7 @@ from collections import Counter
 BASE_DIR = 'F:/Claude project/大数据应用系统开发实践'
 NLP_DIR = os.path.join(BASE_DIR, 'nlp_processing')
 CLEANED_DATA_PATH = os.path.join(NLP_DIR, 'cleaned_danmaku.json')
-OUTPUT_PATH = os.path.join(NLP_DIR, 'sentiment_enhanced.json')
+OUTPUT_PATH = os.path.join(NLP_DIR, 'sentiment_rules.json')
 
 # ============================================================
 # 否定词表
@@ -117,11 +117,11 @@ EMOTICONS = {
 # ============================================================
 # 情感分析器
 # ============================================================
-class EnhancedSentimentAnalyzer:
-    """增强版情感分析器"""
+class RuleBasedSentimentAnalyzer:
+    """情感分析器（规则 + 词典 + 表情 + 标点 + 转折）"""
 
     def __init__(self):
-        print('[增强版情感分析器初始化]')
+        print('[情感分析器初始化]')
         print(f'    正面词: {len(POSITIVE_WORDS)}个')
         print(f'    负面词: {len(NEGATIVE_WORDS)}个')
         print(f'    否定词: {len(NEGATION_WORDS)}个')
@@ -149,7 +149,7 @@ class EnhancedSentimentAnalyzer:
         """计算标点符号得分"""
         score = 0
 
-        # 感叹号（增强情感）
+        # 感叹号（情感放大）
         exclamation_count = text.count('！') + text.count('!')
         question_count = text.count('？') + text.count('?')
 
@@ -280,7 +280,7 @@ class EnhancedSentimentAnalyzer:
 # ============================================================
 def main():
     print('=' * 70)
-    print('情感分析增强模块')
+    print('情感分析（规则 + 词典）模块')
     print('=' * 70)
 
     # 加载数据
@@ -292,7 +292,7 @@ def main():
 
     # 分析
     print('\n[2] 情感分析...')
-    analyzer = EnhancedSentimentAnalyzer()
+    analyzer = RuleBasedSentimentAnalyzer()
 
     results = []
     pos_count = 0

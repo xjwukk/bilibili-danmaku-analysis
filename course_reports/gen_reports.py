@@ -269,6 +269,6 @@ def build_one(data_path, out_name):
 
 if __name__ == "__main__":
     a = build_one(os.path.join(OUT_DIR, "report_a_data.json"),
-                  "报告A_数据层_课程设计报告_v2.docx")
+                  "报告A_数据层_课程设计报告.docx")
     b = build_one(os.path.join(OUT_DIR, "report_b_data.json"),
-                  "报告B_应用层_课程设计报告_v2.docx")
+                  "报告B_应用层_课程设计报告.docx")

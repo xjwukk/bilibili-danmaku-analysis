@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""词云生成脚本 V2 - 修复版"""
+"""词云生成脚本"""
 import json
 import os
 

@@ -12,13 +12,13 @@
 2. [模块与文件清单](#2-模块与文件清单)
 3. [功能 1：弹幕分词（jieba / pkuseg）](#3-功能-1弹幕分词jieba--pkuseg)
 4. [功能 2：词频统计 + 词云数据](#4-功能-2词频统计--词云数据)
-5. [功能 3：情感分析（基础版）](#5-功能-3情感分析基础版)
-6. [功能 4：增强情感分析（否定/程度/表情/转折）](#6-功能-4增强情感分析否定程度表情转折)
+5. [功能 3：情感分析（SnowNLP 基础打分）](#5-功能-3情感分析snownlp-基础打分)
+6. [功能 4：规则情感分析（否定/程度/表情/转折）](#6-功能-4规则情感分析否定程度表情转折)
 7. [功能 5：NER 实体识别](#7-功能-5ner-实体识别)
 8. [功能 6：关键词抽取（TF-IDF + TextRank）](#8-功能-6关键词抽取tf-idf--textrank)
-9. [功能 7：LDA 主题建模（coherence 寻优）](#9-功能-7lda-主题建模coherence-寻优)
+9. [功能 7：LDA 主题建模（coherence 选优）](#9-功能-7lda-主题建模coherence-选优)
 10. [功能 8：情感分离 LDA](#10-功能-8情感分离-lda)
-11. [功能 9：增强分析（情感趋势/类型/时间/用户/共现）](#11-功能-9增强分析情感趋势类型时间用户共现)
+11. [功能 9：深度分析（情感趋势/类型/时间/用户/共现）](#11-功能-9深度分析情感趋势类型时间用户共现)
 12. [功能 10：前端可视化（ECharts 词云 + 图表）](#12-功能-10前端可视化echarts-词云--图表)
 13. [端到端联调测试](#13-端到端联调测试)
 14. [常见问题排查](#14-常见问题排查)
@@ -57,7 +57,7 @@ pip install jieba pkuseg snownlp gensim wordcloud cnsenti scikit-learn numpy pan
 ```bash
 # 1. 跑学生A的爬虫
 cd "F:\Claude Project\大数据应用系统开发实践\bilibili_crawler"
-python bilibili_crawler_v3.py
+python bilibili_crawler.py
 
 # 2. 跑学生A的清洗
 cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
@@ -84,9 +84,9 @@ npx http-server -p 8080
 |------|------|------|------|
 | `nlp_processing/segmentation.py` | pkuseg / jieba 分词 + 词性 | cleaned_danmaku.json | 分词结果 |
 | `nlp_processing/nlp_process.py` | 词频统计 + 词云数据 + 基础 LDA | cleaned_danmaku.json | wordfreq.json, lda_topics.json |
-| `nlp_processing/generate_wordcloud_v2.py` | 生成 ECharts 词云 JSON | wordfreq.json | 词云前端数据 |
+| `nlp_processing/generate_wordcloud.py` | 生成 ECharts 词云 JSON | wordfreq.json | 词云前端数据 |
 | `nlp_processing/sentiment_lexicon.py` | SnowNLP 情感打分 | cleaned_danmaku.json | sentiment.json |
-| `nlp_processing/sentiment_enhanced.py` | 增强版情感（规则+否定+表情） | cleaned_danmaku.json | 增强情感结果 |
+| `nlp_processing/sentiment_rules.py` | 规则情感分析（否定/程度/表情/转折） | cleaned_danmaku.json | 情感分析结果 |
 | `nlp_processing/ner_recognition.py` | 命名实体识别（人名/地名/机构/技术词） | cleaned_danmaku.json | ner_entities.json |
 | `nlp_processing/keyword_extraction.py` | TF-IDF + TextRank 关键词 | cleaned_danmaku.json | keywords.json |
 | `nlp_processing/lda_sentiment_topics.py` | 情感分离 LDA（积极/消极分别建模） | cleaned_danmaku.json | lda_sentiment_topics.json |
@@ -118,7 +118,7 @@ python segmentation.py
 
 ```
 ============================================================
-分词模块 - pkuseg 升级版
+分词模块 - pkuseg
 ============================================================
 加载 pkuseg 模型...
 分词进度: 1000/3515
@@ -141,7 +141,7 @@ Top 20 高频词:
 
 ### 3.3 产物
 
-- **生成**：`nlp_processing/wordfreq_pkuseg.json`（pkuseg 版词频，可与 jieba 版对比）
+- **生成**：`nlp_processing/wordfreq_pkuseg.json`（pkuseg 版词频，与 jieba 版可并存）
 
 ### 3.4 测试用例
 
@@ -176,7 +176,7 @@ cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
 python nlp_process.py
 
 # 2. 词云生成（ECharts 格式）
-python generate_wordcloud_v2.py
+python generate_wordcloud.py
 ```
 
 ### 4.2 预期输出（nlp_process.py）
@@ -195,15 +195,15 @@ NLP 处理模块
   Top 20: AI(142), 权限(87), 模型(76), token(65)...
 
 [3/3] LDA 主题建模
-  寻找最优主题数 (3-8)...
-  最优: 8 个主题, coherence=0.6135
+  在 3-8 范围内寻找合适主题数...
+  结果: 8 个主题, coherence=0.6135
 
 输出:
   wordfreq.json       (Top 100)
   lda_topics.json     (8 主题)
 ```
 
-### 4.3 预期输出（generate_wordcloud_v2.py）
+### 4.3 预期输出（generate_wordcloud.py）
 
 ```
 Loading word frequency data...
@@ -233,7 +233,7 @@ Saved: web_frontend/data/wordcloud.json
 
 ---
 
-## 5. 功能 3：情感分析（基础版）
+## 5. 功能 3：情感分析（SnowNLP 基础打分）
 
 ### 5.1 一键运行
 
@@ -294,20 +294,20 @@ print(f\"Total: {s['total']}, +: {s['positive']['count']}, -: {s['negative']['co
 
 ---
 
-## 6. 功能 4：增强情感分析（否定/程度/表情/转折）
+## 6. 功能 4：规则情感分析（否定/程度/表情/转折）
 
 ### 6.1 一键运行
 
 ```bash
 cd "F:\Claude Project\大数据应用系统开发实践\nlp_processing"
-python sentiment_enhanced.py
+python sentiment_rules.py
 ```
 
 ### 6.2 预期输出
 
 ```
 ============================================================
-增强版情感分析
+规则情感分析
 ============================================================
 规则集:
   否定词: 9 个
@@ -318,17 +318,12 @@ python sentiment_enhanced.py
 分析中...
 完成 3515 条
 
-对比基础版:
-                基础版    增强版
-  正面          42.30%    42.12%
-  负面          39.94%    32.47%
-  中性          17.75%    25.41%
+情感分布:
+  正面          42.12%
+  负面          32.47%
+  中性          25.41%
 
-增强效果:
-  负面 ↓ 7.47%（部分误判被修正为中性）
-  中性 ↑ 7.66%
-
-保存: sentiment_enhanced.json
+保存: sentiment_rules.json
 ```
 
 ### 6.3 测试用例
@@ -336,19 +331,19 @@ python sentiment_enhanced.py
 | 测试项 | 预期 | 通过条件 |
 |--------|------|---------|
 | 规则加载 | 4 类规则 | 输出含 "规则集" 列表 |
-| 增强对比 | 负面比例下降 | `enhanced['negative'] < basic['negative']` |
+| 三类比例和 | 100% | `pos+neg+neu == total` |
 | JSON 完整 | 含 stats + details | 字段齐全 |
 
 ### 6.4 自检样例
 
 ```python
 # 单元测试片段
-from sentiment_enhanced import EnhancedSentimentAnalyzer
-ana = EnhancedSentimentAnalyzer()
+from sentiment_rules import RuleBasedSentimentAnalyzer
+ana = RuleBasedSentimentAnalyzer()
 assert ana.analyze("这个视频太棒了")['label'] == 'positive'
 assert ana.analyze("垃圾视频")['label'] == 'negative'
 assert ana.analyze("一般般吧")['label'] == 'neutral'
-print("✓ 增强情感分析单元测试通过")
+print("✓ 规则情感分析单元测试通过")
 ```
 
 ---
@@ -440,7 +435,7 @@ python keyword_extraction.py
 
 ---
 
-## 9. 功能 7：LDA 主题建模（coherence 寻优）
+## 9. 功能 7：LDA 主题建模（coherence 选优）
 
 ### 9.1 一键运行
 
@@ -523,7 +518,7 @@ python lda_sentiment_topics.py
 
 ---
 
-## 11. 功能 9：增强分析（情感趋势/类型/时间/用户/共现）
+## 11. 功能 9：深度分析（情感趋势/类型/时间/用户/共现）
 
 ### 11.1 完整流水线
 
@@ -680,14 +675,14 @@ ROOT="F:\Claude Project\大数据应用系统开发实践"
 echo "==== 1. 词频统计 + LDA ===="
 cd "$ROOT/nlp_processing"
 python nlp_process.py
-python generate_wordcloud_v2.py
+python generate_wordcloud.py
 
 echo "==== 2. 情感分析 ===="
 python sentiment_lexicon.py
-python sentiment_enhanced.py
+python sentiment_rules.py
 python sentiment_distribution.py
 
-echo "==== 3. 增强 NLP 模块 ===="
+echo "==== 3. NLP 扩展模块 ===="
 python segmentation.py
 python ner_recognition.py
 python keyword_extraction.py
@@ -725,7 +720,7 @@ bash course_reports/run_e2e_B.sh
 | 词云 | wordcloud.json | 100 条数据 |
 | 情感 | sentiment.json | 3515 条打分 |
 | LDA | lda_topics.json | 8 主题 |
-| 增强 | sentiment_enhanced.json + 各类 json | 字段齐全 |
+| 规则情感 | sentiment_rules.json + 各类 json | 字段齐全 |
 | 前端 | http://localhost:8080 | 浏览器正常渲染 |
 
 ---
@@ -783,9 +778,9 @@ bash course_reports/run_e2e_B.sh
 |------|------|
 | 分词模块 | [nlp_processing/segmentation.py](../nlp_processing/segmentation.py) |
 | 词频 + LDA | [nlp_processing/nlp_process.py](../nlp_processing/nlp_process.py) |
-| 词云生成 | [nlp_processing/generate_wordcloud_v2.py](../nlp_processing/generate_wordcloud_v2.py) |
+| 词云生成 | [nlp_processing/generate_wordcloud.py](../nlp_processing/generate_wordcloud.py) |
 | 情感分析（基础） | [nlp_processing/sentiment_lexicon.py](../nlp_processing/sentiment_lexicon.py) |
-| 情感分析（增强） | [nlp_processing/sentiment_enhanced.py](../nlp_processing/sentiment_enhanced.py) |
+| 情感分析（规则） | [nlp_processing/sentiment_rules.py](../nlp_processing/sentiment_rules.py) |
 | NER 识别 | [nlp_processing/ner_recognition.py](../nlp_processing/ner_recognition.py) |
 | 关键词抽取 | [nlp_processing/keyword_extraction.py](../nlp_processing/keyword_extraction.py) |
 | 情感分离 LDA | [nlp_processing/lda_sentiment_topics.py](../nlp_processing/lda_sentiment_topics.py) |

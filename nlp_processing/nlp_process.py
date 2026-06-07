@@ -3,11 +3,11 @@
 NLP处理模块
 功能：分词、词频统计、词云生成、情感分析、LDA主题分析
 
-改进版：
+关键特性：
 - 使用cnsenti专业情感词典
 - 基于jieba分词后的词典匹配（非字符迭代）
 - 否定词处理
-- LDA模型coherence score优化
+- LDA模型基于 coherence score 选择主题数
 """
 
 import json
@@ -152,11 +152,11 @@ def word_frequency_analysis(valid_words, top_n=50):
 
 
 # ============================================================
-# 5. 情感分析（改进版 - 基于分词+词典匹配+否定处理）
+# 5. 情感分析（基于分词+词典匹配+否定处理）
 # ============================================================
 def sentiment_analysis_improved(danmaku_list):
     """
-    改进版情感分析：使用cnsenti+分词+词典匹配+否定处理
+    情感分析：使用cnsenti+分词+词典匹配+否定处理
 
     参数:
         danmaku_list: 弹幕列表
@@ -164,7 +164,7 @@ def sentiment_analysis_improved(danmaku_list):
     返回:
         sentiment_result: 情感分析结果
     """
-    print('\n[情感分析 - 改进版]')
+    print('\n[情感分析]')
 
     # 初始化专业情感分析器
     analyzer = SentimentAnalyzer()
@@ -231,12 +231,12 @@ def sentiment_analysis_improved(danmaku_list):
 
 # 保留旧接口兼容
 def sentiment_analysis(danmaku_list):
-    """兼容旧接口，调用改进版"""
+    """函数别名，调用 sentiment_analysis_improved"""
     return sentiment_analysis_improved(danmaku_list)
 
 
 # ============================================================
-# 6. LDA主题分析（优化版 - Bigram/POS过滤/Coherence Score）
+# 6. LDA主题分析（Bigram / POS过滤 / Coherence Score 选优）
 # ============================================================
 def filter_content_words(text):
     """只保留名词、动词、形容词（POS过滤）"""
@@ -245,10 +245,10 @@ def filter_content_words(text):
 
 
 def find_optimal_topics(texts, dictionary, corpus, min_topics=3, max_topics=8):
-    """寻找最优主题数（基于coherence score）"""
+    """基于 coherence score 选择合适的主题数"""
     from gensim.models import LdaModel, CoherenceModel
 
-    print('    寻找最优主题数...')
+    print('    评估各主题数 coherence...')
     coherence_scores = []
 
     for num_topics in range(min_topics, max_topics + 1):
@@ -272,16 +272,16 @@ def find_optimal_topics(texts, dictionary, corpus, min_topics=3, max_topics=8):
 
 def lda_topic_analysis_improved(danmaku_list, num_topics=5):
     """
-    改进版LDA主题分析：含Bigram提取、POS过滤、Coherence Score优化
+    LDA主题分析：包含 Bigram 提取、POS 过滤、Coherence Score 选优
 
     参数:
         danmaku_list: 弹幕列表
-        num_topics: 默认主题数（如果coherence优化开启则自动调整）
+        num_topics: 默认主题数（如果 coherence 选优开启则自动调整）
 
     返回:
         lda_result: LDA分析结果
     """
-    print(f'\n[LDA主题分析 - 优化版]')
+    print(f'\n[LDA主题分析]')
 
     try:
         from gensim import corpora
@@ -331,11 +331,11 @@ def lda_topic_analysis_improved(danmaku_list, num_topics=5):
 
     print(f'    词典大小: {len(dictionary)}')
 
-    # 4. 计算最优主题数（使用coherence score）
-    print('    [4] 计算最优主题数...')
+    # 4. 计算合适的主题数（使用coherence score）
+    print('    [4] 选择主题数...')
     optimal_topics, coherence_scores = find_optimal_topics(texts_bigram, dictionary, corpus)
 
-    # 如果最优主题数与默认不同，使用最优
+    # 如果选优主题数与默认不同，使用选优结果
     actual_topics = optimal_topics if optimal_topics != num_topics else num_topics
     print(f'    使用主题数: {actual_topics}')
 
@@ -386,7 +386,7 @@ def lda_topic_analysis_improved(danmaku_list, num_topics=5):
 
 # 保留旧接口兼容
 def lda_topic_analysis(danmaku_list, num_topics=5):
-    """兼容旧接口，调用改进版"""
+    """函数别名，调用 lda_topic_analysis_improved"""
     return lda_topic_analysis_improved(danmaku_list, num_topics)
 
 

@@ -93,7 +93,7 @@ def train_lda(texts, num_topics=4, random_state=42):
 
 
 def find_optimal_topics(texts, min_topics=3, max_topics=8):
-    """寻找最优主题数"""
+    """基于 coherence score 选择合适的主题数"""
     from gensim import corpora
     from gensim.models import LdaModel, CoherenceModel
 
